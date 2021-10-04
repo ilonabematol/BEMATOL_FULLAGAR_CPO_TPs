@@ -22,13 +22,20 @@ public class TP1_manipNombresInt {
         int var1;
         int var2;
         int somme=0;
+        int diff =0;
+        int produit = 0;
+        
         Scanner sc = new Scanner( System.in);
         System.out.println( " please enter the the first number:");
         var1= sc.nextInt();
         System.out.println( " please enter the the first number:");
         var2= sc.nextInt();
         somme= var1+var2;
-        System.out.println(somme);
+        System.out.println(" le resultat de la somme est " + somme);
+        diff = var1 - var2;
+        System.out.println(" le resultat de la différence est " + diff);
+        produit = var1*var2;
+        System.out.println(" le resultat de le produit est " + produit);
         
     }
     
