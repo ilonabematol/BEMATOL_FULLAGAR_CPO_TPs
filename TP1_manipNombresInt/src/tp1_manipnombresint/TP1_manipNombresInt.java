@@ -24,6 +24,8 @@ public class TP1_manipNombresInt {
         int somme=0;
         int diff =0;
         int produit = 0;
+        int quotien = 0;
+        int diveucl =0;
         
         Scanner sc = new Scanner( System.in);
         System.out.println( " please enter the the first number:");
@@ -35,7 +37,10 @@ public class TP1_manipNombresInt {
         diff = var1 - var2;
         System.out.println(" le resultat de la différence est " + diff);
         produit = var1*var2;
-        System.out.println(" le resultat de le produit est " + produit);
+        System.out.println(" le resultat du produit est " + produit);
+        quotien = var1/var2;
+        System.out.println(" le resultat du quotient est " +quotien);
+        diveucl = 
         
     }
     
