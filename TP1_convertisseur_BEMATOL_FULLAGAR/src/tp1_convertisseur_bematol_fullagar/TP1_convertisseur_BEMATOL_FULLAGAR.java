@@ -23,6 +23,7 @@ public class TP1_convertisseur_BEMATOL_FULLAGAR {
         
     double tempC=0;
     double tempK=0;
+    
     Scanner sc = new Scanner(System.in);
     System.out.println( "entrer une temperature en celcius:");
     tempC= sc.nextDouble();
@@ -32,11 +33,35 @@ public class TP1_convertisseur_BEMATOL_FULLAGAR {
     
     }  
 
-  
-}
+
 
     public static double CelciusVersKelvin ( double tempCelcius){
-    double tempKelvin =0;
-    tempKelvin = tempCelcius + 273.15;
-    return tempKelvin;   
+    double tempKelvin = tempCelcius + 273.15;
+    return (double) tempKelvin;}  
+    
+   public static double KelvinVersCelcius ( double tempKelvin){
+    double tempCelcius = tempKelvin - 273.15;
+    return (double) tempCelcius;  
 }
+
+public static double FarenheitVersCelcius ( double tempFarenheit){
+    double tempCelcius = tempFarenheit - 32;
+    return (double) tempCelcius; 
+}
+
+public static double CelciusVersFarenheit ( double tempCelcius){
+    double tempFarenheit = tempCelcius + 32;
+    return (double) tempFarenheit; 
+}
+
+public static double KelvinVersFarenheit ( double tempKelvin){
+    double tempFarenheit = tempKelvin - 459.67;
+    return (double) tempFarenheit; 
+}
+public static double FarenheitVersKelvin ( double tempFarenheit){
+    double tempKelvin = tempFarenheit - 459.67;
+    return (double) tempKelvin; 
+}
+}
+ 
+
