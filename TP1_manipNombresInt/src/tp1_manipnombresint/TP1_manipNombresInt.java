@@ -6,10 +6,10 @@ package tp1_manipnombresint;
 
 import java.util.Scanner;
 
-/**
- *
- * @author ilonabematol
- */
+//TP1 Saisie et manipulation de nombres
+        //Ilona Bématol Fullagar Scott
+        //04/10/2021
+        
 public class TP1_manipNombresInt {
 
     /**
