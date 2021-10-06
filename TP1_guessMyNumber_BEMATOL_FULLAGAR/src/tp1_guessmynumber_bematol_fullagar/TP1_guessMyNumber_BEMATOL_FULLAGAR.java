@@ -27,35 +27,91 @@ public class TP1_guessMyNumber_BEMATOL_FULLAGAR {
        
         
         int nbaleaordi= generateurAleat.nextInt(100);
-        
-        
+        int niveau;
       
         Scanner sc = new Scanner( System.in);
-        System.out.println("saisissez un nombre aleatoire entre 0 et 100");
-        int nbaleautilisateur =sc.nextInt();
-        while ( nbaleautilisateur< 0|| nbaleautilisateur > 100  ) { 
-            System.out.println( " error i need a number between 0 and 100 !");
-            System.exit(0);
-        }
-        boolean False;
-        int compteur=0;
         
-        while ( False ){
-          if (nbaleaordi < nbaleautilisateur){
-            System.out.println("trop grand");
-            compteur+=1;
-
-        } else if (nbaleaordi > nbaleautilisateur){
-            System.out.println("trop petit");
-            compteur+=1;
-        } else if (nbaleaordi == nbaleautilisateur){
-            System.out.println("gagne, vous avez fait " + compteur + "tentatives");
-    }
-        }
-    
+        System.out.println("""
+                           choisissez le niveau du jeu :
+                           1) facile
+                            2)normal
+                            3) difficile""");
+        niveau = sc.nextInt();
         
-    }
-   
-    
-}
+        
+        switch( niveau ){ 
+            case 1 -> {
+                System.out.println("saisissez un nombre aleatoire entre 0 et 100");
+            int nbaleautilisateur =sc.nextInt();
+            while ( nbaleautilisateur< 0|| nbaleautilisateur > 100  ) { 
+                System.out.println( " error i need a number between 0 and 100 !");
+                System.exit(0);
+            }
+            boolean False;
+            int compteur=0;
 
+            while ( False ){
+              if (nbaleaordi < nbaleautilisateur){
+                System.out.println("trop grand");
+                compteur+=1;
+
+            } else if (nbaleaordi > nbaleautilisateur){
+                System.out.println("trop petit");
+                compteur+=1;
+            } else if (nbaleaordi == nbaleautilisateur){
+                System.out.println("gagne, vous avez fait " + compteur + "tentatives");
+        }
+         
+      } 
+            }
+         case 2 -> {
+         System.out.println("saisissez un nombre aleatoire entre 0 et 100");
+            int nbaleautilisateur =sc.nextInt();
+            while ( nbaleautilisateur< 0|| nbaleautilisateur > 100  ) { 
+                System.out.println( " error i need a number between 0 and 100 !");
+                System.exit(0);
+            }
+            boolean False;
+            int compteur=0;
+
+            while ( False ){
+              if (nbaleaordi < nbaleautilisateur){
+                System.out.println("trop grand");
+                compteur+=1;
+
+            } else if (nbaleaordi > nbaleautilisateur){
+                System.out.println("trop petit");
+                compteur+=1;
+            } else if (nbaleaordi == nbaleautilisateur){
+                System.out.println("gagne, vous avez fait " + compteur + "tentatives");
+        }
+            }   
+         }
+       case 3 -> {
+         System.out.println("saisissez un nombre aleatoire entre 0 et 100");
+            int nbaleautilisateur =sc.nextInt();
+            while ( nbaleautilisateur< 0|| nbaleautilisateur > 100  ) { 
+                System.out.println( " error i need a number between 0 and 100 !");
+                System.exit(0);
+            }
+            boolean False;
+            int compteur=0;
+
+            while ( False ){
+              if (nbaleaordi < nbaleautilisateur){
+                System.out.println("trop grand");
+                compteur+=1;
+
+            } else if (nbaleaordi > nbaleautilisateur){
+                System.out.println("trop petit");
+                compteur+=1;
+            } else if (nbaleaordi == nbaleautilisateur){
+                System.out.println("gagne, vous avez fait " + compteur + "tentatives");
+        }
+            }   
+         }  
+         
+ }
+                
+            
+            
