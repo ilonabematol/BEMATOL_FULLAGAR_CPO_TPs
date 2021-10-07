@@ -41,77 +41,79 @@ public class TP1_guessMyNumber_BEMATOL_FULLAGAR {
         
         switch( niveau ){ 
             case 1 -> {
-                System.out.println("saisissez un nombre aleatoire entre 0 et 100");
+                System.out.println("saisissez un nombre aleatoire entre 0 et 20");
             int nbaleautilisateur =sc.nextInt();
             while ( nbaleautilisateur< 0|| nbaleautilisateur > 100  ) { 
-                System.out.println( " error i need a number between 0 and 100 !");
+                System.out.println( " error i need a number between 0 and 20 !");
                 System.exit(0);
             }
-            boolean False;
-            int compteur=0;
+            //boolean False;
+            int compteur=20;
 
-            while ( False ){
+            while ( compteur>0  ){
               if (nbaleaordi < nbaleautilisateur){
                 System.out.println("trop grand");
-                compteur+=1;
+                compteur-=1;
 
             } else if (nbaleaordi > nbaleautilisateur){
                 System.out.println("trop petit");
-                compteur+=1;
+                compteur-=1;
             } else if (nbaleaordi == nbaleautilisateur){
                 System.out.println("gagne, vous avez fait " + compteur + "tentatives");
+                System.exit(0);
         }
          
       } 
             }
          case 2 -> {
-         System.out.println("saisissez un nombre aleatoire entre 0 et 100");
+         System.out.println("saisissez un nombre aleatoire entre 0 et 50 ");
             int nbaleautilisateur =sc.nextInt();
-            while ( nbaleautilisateur< 0|| nbaleautilisateur > 100  ) { 
-                System.out.println( " error i need a number between 0 and 100 !");
+            while ( nbaleautilisateur< 0|| nbaleautilisateur > 50 ) { 
+                System.out.println( " error i need a number between 0 and 50 !");
                 System.exit(0);
             }
             //boolean False;
-            int compteur=0;
+            int compteur=10;
            
-            while ( compteur < 10 ){
+            while ( compteur > 0 ){
               if (nbaleaordi < nbaleautilisateur){
-                  if ( nbaleautilisateur-nbaleaordi > 30){
+                  if ( nbaleautilisateur-nbaleaordi > 15){
                     System.out.println("beaucoup trop grand");
-                    compteur+=1;  
+                    compteur-=1;  
                   }else{
                       System.out.println(" trop grand");
-                    compteur+=1;
+                    compteur-=1;
                   }
               
      
             }  if (nbaleaordi > nbaleautilisateur){
-                if ( nbaleaordi - nbaleautilisateur >30){
+                if ( 15 <=nbaleaordi - nbaleautilisateur){
                     System.out.println(" beaucoup trop petit");
-                    compteur+=1;
+                    compteur-=1;
                 } else {
                     System.out.println(" trop petit");
-                    compteur+=1;
+                    compteur-=1;
                 }
                 
             }
                 
             } if  (nbaleaordi == nbaleautilisateur){
                 System.out.println("gagne, vous avez fait " + compteur + "tentatives");
+                System.exit(0);
         }
             }   
          }
        case 3 -> {
-         System.out.println("saisissez un nombre aleatoire entre 0 et 100");
+         System.out.println("saisissez un nombre aleatoire entre 0 et 70");
             int nbaleautilisateur =sc.nextInt();
-            while ( nbaleautilisateur< 0|| nbaleautilisateur > 100  ) { 
-                System.out.println( " error i need a number between 0 and 100 !");
+            while ( nbaleautilisateur< 0|| nbaleautilisateur > 70  ) { 
+                System.out.println( " error i need a number between 0 and 70 !");
                 System.exit(0);
             }
             //boolean False;
-            int compteur=0;
+            int compteur=15;
 
-            while ( compteur<5 ){
+            while ( compteur>0 ){
               if (nbaleaordi < nbaleautilisateur){
                 System.out.println("trop grand");
                 compteur+=1;
@@ -121,6 +123,7 @@ public class TP1_guessMyNumber_BEMATOL_FULLAGAR {
                 compteur+=1;
             } else if (nbaleaordi == nbaleautilisateur){
                 System.out.println("gagne, vous avez fait moins de 5 tentatives");
+                System.exit(0);
         }
               System.out.println("dommage c'est perdu vous avez dépassez le nombre de tentatives");
             }   
