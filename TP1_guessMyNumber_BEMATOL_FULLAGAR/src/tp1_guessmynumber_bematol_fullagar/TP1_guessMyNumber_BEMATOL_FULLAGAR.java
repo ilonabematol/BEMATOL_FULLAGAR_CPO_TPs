@@ -51,14 +51,17 @@ public class TP1_guessMyNumber_BEMATOL_FULLAGAR {
             int compteur=20;
 
             while ( compteur>0  ){
+              nbaleautilisateur = sc.nextInt();
               if (nbaleaordi < nbaleautilisateur){
                 System.out.println("trop grand");
                 compteur-=1;
-                continue;
+                
+               
             } else if (nbaleaordi > nbaleautilisateur){
                 System.out.println("trop petit");
                 compteur-=1;
-                continue;
+                
+                
                 
             } else if (nbaleaordi == nbaleautilisateur){
                 System.out.println("gagne, vous avez fait " + compteur + "tentatives");
@@ -70,7 +73,7 @@ public class TP1_guessMyNumber_BEMATOL_FULLAGAR {
             }
          case 2 -> {
          System.out.println("saisissez un nombre aleatoire entre 0 et 50 ");
-            int nbaleautilisateur =sc.nextInt();
+            int nbaleautilisateur = sc.nextInt();
             while ( nbaleautilisateur< 0|| nbaleautilisateur > 50 ) { 
                 System.out.println( " error i need a number between 0 and 50 !");
                 System.exit(0);
@@ -79,27 +82,28 @@ public class TP1_guessMyNumber_BEMATOL_FULLAGAR {
             int compteur=10;
            
             while ( compteur > 0 ){
+              nbaleautilisateur = sc.nextInt();
               if (nbaleaordi < nbaleautilisateur){
                   if ( nbaleautilisateur-nbaleaordi > 15){
                     System.out.println("beaucoup trop grand");
                     compteur-=1; 
-                    continue;
+                    
+                   
                   }else{
-                      System.out.println(" trop grand");
+                    System.out.println(" trop grand");
                     compteur-=1;
-                    continue;
                     
                   }
               
      
             }  if (nbaleaordi > nbaleautilisateur){
-                if ( 15 <=nbaleaordi - nbaleautilisateur){
+                if ( 15 <= nbaleaordi - nbaleautilisateur){
                     System.out.println(" beaucoup trop petit");
                     compteur-=1;
+                    
                 } else {
                     System.out.println(" trop petit");
-                    compteur-=1;
-                    
+                    compteur-=1;   
                 }
                 
             }
