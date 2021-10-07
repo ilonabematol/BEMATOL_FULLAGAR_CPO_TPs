@@ -45,7 +45,11 @@ public class TP1_guessMyNumber_BEMATOL_FULLAGAR {
             int nbaleautilisateur =sc.nextInt();
             while ( nbaleautilisateur< 0|| nbaleautilisateur > 20  ) { 
                 System.out.println( " error i need a number between 0 and 20 !");
-                System.exit(0);
+                System.out.println("saisissez un nombre aleatoire entre 0 et 20");
+                
+                
+               // niveau = 1;
+                
             }
             //boolean False;
             int compteur=20;
@@ -87,8 +91,6 @@ public class TP1_guessMyNumber_BEMATOL_FULLAGAR {
                   if ( nbaleautilisateur-nbaleaordi > 15){
                     System.out.println("beaucoup trop grand");
                     compteur-=1; 
-                    
-                   
                   }else{
                     System.out.println(" trop grand");
                     compteur-=1;
