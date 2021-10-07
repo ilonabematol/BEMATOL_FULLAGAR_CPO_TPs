@@ -33,9 +33,9 @@ public class TP1_guessMyNumber_BEMATOL_FULLAGAR {
         
         System.out.println("""
                            choisissez le niveau du jeu :
-                           1) facile
+                            1)facile
                             2)normal
-                            3) difficile""");
+                            3)difficile""");
         niveau = sc.nextInt();
         
         
@@ -71,18 +71,32 @@ public class TP1_guessMyNumber_BEMATOL_FULLAGAR {
                 System.out.println( " error i need a number between 0 and 100 !");
                 System.exit(0);
             }
-            boolean False;
+            //boolean False;
             int compteur=0;
-
-            while ( False ){
+           
+            while ( compteur < 10 ){
               if (nbaleaordi < nbaleautilisateur){
-                System.out.println("trop grand");
-                compteur+=1;
-
-            } else if (nbaleaordi > nbaleautilisateur){
-                System.out.println("trop petit");
-                compteur+=1;
-            } else if (nbaleaordi == nbaleautilisateur){
+                  if ( nbaleautilisateur-nbaleaordi > 30){
+                    System.out.println("beaucoup trop grand");
+                    compteur+=1;  
+                  }else{
+                      System.out.println(" trop grand");
+                    compteur+=1;
+                  }
+              
+     
+            }  if (nbaleaordi > nbaleautilisateur){
+                if ( nbaleaordi - nbaleautilisateur >30){
+                    System.out.println(" beaucoup trop petit");
+                    compteur+=1;
+                } else {
+                    System.out.println(" trop petit");
+                    compteur+=1;
+                }
+                
+            }
+                
+            } if  (nbaleaordi == nbaleautilisateur){
                 System.out.println("gagne, vous avez fait " + compteur + "tentatives");
         }
             }   
@@ -94,10 +108,10 @@ public class TP1_guessMyNumber_BEMATOL_FULLAGAR {
                 System.out.println( " error i need a number between 0 and 100 !");
                 System.exit(0);
             }
-            boolean False;
+            //boolean False;
             int compteur=0;
 
-            while ( False ){
+            while ( compteur<5 ){
               if (nbaleaordi < nbaleautilisateur){
                 System.out.println("trop grand");
                 compteur+=1;
@@ -106,8 +120,9 @@ public class TP1_guessMyNumber_BEMATOL_FULLAGAR {
                 System.out.println("trop petit");
                 compteur+=1;
             } else if (nbaleaordi == nbaleautilisateur){
-                System.out.println("gagne, vous avez fait " + compteur + "tentatives");
+                System.out.println("gagne, vous avez fait moins de 5 tentatives");
         }
+              System.out.println("dommage c'est perdu vous avez dépassez le nombre de tentatives");
             }   
          }  
          
