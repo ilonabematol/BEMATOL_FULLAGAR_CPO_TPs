@@ -50,7 +50,7 @@ public class Convertisseur {
         return (double) tempKelvin;
     }
     public String toString () {
-        return "nb de conversions"+ nbConversions;
+        return "nb de conversions : "+ nbConversions;
 }
 }
 
