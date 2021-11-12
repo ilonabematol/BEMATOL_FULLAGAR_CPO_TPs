@@ -9,23 +9,64 @@ package sp4_console_bematol_fullagar;
  * @author ilonabematol
  */
 public class Grille {
-    int CellulesJeu[] []= new int[6][7];
+    Cellule CellulesJeu[][]= new Cellule[6][7];// on créé la grille
     
-    public void Grille(){
+    public Grille(){
         
     }
-    public boulean ajouterJetonDansColonne(Jeton, int){
-        if (CellulesJeu[i][j]!= null){
-           return false;  
+    public boolean ajouterJetonDansColonne(Jeton jeton , int j){//j correspond au numéro de la colonne
+        if (CellulesJeu[5][j]!= null){
+           return false;// la colone est pleine  
+        }else {
+            for(int i=5; i>0 ; i--){
+                if(CellulesJeu[i][j]== null){
+                    CellulesJeu[i][j] == jeton ; // prend la couleur du jeton de celui qui joue 
+            // le jeton est placé dans la case la plus basse 
+            }
         }
         
     }
-    public boolean etreRemplie(){ // on créer cette méthode pour voir si le tableau est rempli
-        for (int i=0; i < CellulesJeu.length; i++ )// on parcourt le tableau 
-            if (CellulesJeu[i][]!= null){
+    }
+    public boolean etreRemplie(){ 
+        // on créer cette méthode pour voir si le tableau est rempli
+        for (int j=0; j < CellulesJeu.length; j++ ){
+// on parcourt le tableau 
+            if (CellulesJeu[5][j]!= null){ // correspond à la la ligne la plus haute de la grille 
                return true; // la grille est pleine 
             }
-    public void viderGrille    
+        }
+    }
+    
+    public void viderGrille(){
+        for (int i=0; i < CellulesJeu.length; i++ ){// 6lignes
+            for (int j=0; j < CellulesJeu[i].length; j++ ){// 7colonnes
+                CellulesJeu[i][j].jetonCourant = null;
+                
+            }
+        }
+    }   
+    public void afficherGrilleSurConsole(){/// affiche la grille sur la console 
         
     }
+    public boolean celluleOccupee(int i, int j){
+        if ( CellulesJeu[i][j]!= null){ // la cellule est occupée par un jeton
+
+    }
+    public String  lireCouleurDuJeton(int i, int j ){
+        if (CellulesJeu[i][j] == "jaune" ){
+            return "jaune";
+            
+        }else{
+            return "rouge";
+        }
+    }
+
+}
+
+
+
+
+
+
+
 }
