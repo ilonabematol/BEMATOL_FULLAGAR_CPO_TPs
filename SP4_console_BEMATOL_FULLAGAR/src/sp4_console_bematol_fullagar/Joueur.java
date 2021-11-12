@@ -16,16 +16,20 @@ public class Joueur {
     int nombreDesintegrateurs=0;
    
     public void Joueur(String nomJoueur) {
+    nomJoueur=nom;
     
 }
     
     public void affecterCouleur(String couleurJoueur){
+        couleurJoueur=couleur;
         
     }
     public void ajouterJeton(Jeton ajoutJeton){
-        
+        nombreDesintegrateurs= 0;
     }
     public void obtenirDesintegrateur(){
+        nombreDesintegrateurs= 0;
+        
         
     }
     public void utiliserDesintegrateur(){
