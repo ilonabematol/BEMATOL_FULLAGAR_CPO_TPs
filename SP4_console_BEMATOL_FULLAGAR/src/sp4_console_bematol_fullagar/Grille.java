@@ -15,7 +15,6 @@ public class Grille {
         
     }
     public boulean ajouterJetonDansColonne(Jeton, int){
-        
         if (CellulesJeu[i][j]!= null){
            return false;  
         }
@@ -23,10 +22,10 @@ public class Grille {
     }
     public boolean etreRemplie(){ // on créer cette méthode pour voir si le tableau est rempli
         for (int i=0; i < CellulesJeu.length; i++ )// on parcourt le tableau 
-            if (CellulesJeu[i][j]!= null){
+            if (CellulesJeu[i][]!= null){
                return true; // la grille est pleine 
             }
-          
+    public void viderGrille    
         
     }
 }
