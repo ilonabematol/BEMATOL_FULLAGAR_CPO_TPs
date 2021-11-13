@@ -9,30 +9,49 @@ package sp4_console_bematol_fullagar;
  * @author ilonabematol
  */
 public class Joueur {
-    String nom;
-    String couleur;
-    int ListeJetons []= new int[21] ;
-    int nombreJetonsRestants= 0;
-    int nombreDesintegrateurs=0;
-   
-    public void Joueur(String nomJoueur) {
+   String nom;
+   String couleur;
+   Jeton ListeJetons []= new Jeton[21] ;
+    int nombreJetonsRestants;
+    int nombreDesintegrateurs;
+public Joueur(String nomJoueur) {
     nomJoueur=nom;
     
+    // dans le main
+    //Scanner scanner = new Scanner(System.in);
+    //System.out.println("Entrer votre nom: ");
+    //String nom = Scanner.nextString();
+    //System.out.println(nom);
+
 }
-    
+
     public void affecterCouleur(String couleurJoueur){
         couleurJoueur=couleur;
-        
     }
-    public void ajouterJeton(Jeton ajoutJeton){
-        nombreDesintegrateurs= 0;
-    }
+    public boolean ajouterJeton(Jeton ajoutJeton){
+        for(int i=0; i<21; i++ ){ //Parcours la site pour voir si un jeton est deja placé
+            if(ListeJetons [i] == null){
+                ListeJetons [i] = ajoutJeton;
+                return true;// le jeton a été placé
+  
+    } 
+    }   
+       return false;
+    }   
     public void obtenirDesintegrateur(){
-        nombreDesintegrateurs= 0;
-        
-        
+        nombreDesintegrateurs +=1;
     }
-    public void utiliserDesintegrateur(){
-        
+
+    public boolean utiliserDesintegrateur(){
+
+        if (nombreDesintegrateurs == 0){
+            return false; // retourne faux si ya plus de desintegrateur
+        }else{
+               nombreDesintegrateurs -= 1;
+        }
+        return true; //confirme l'utilisation
+
     }
+
 }
+

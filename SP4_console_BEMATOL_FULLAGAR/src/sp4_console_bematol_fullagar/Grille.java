@@ -31,7 +31,7 @@ public class Grille {
         // on créer cette méthode pour voir si le tableau est rempli
         for (int j=0; j < CellulesJeu.length; j++ ){
 // on parcourt le tableau 
-            if (CellulesJeu[5][j]!= null){ // correspond à la la ligne la plus haute de la grille 
+            if (CellulesJeu[5][j]== null){ // correspond à la la ligne la plus haute de la grille 
                return true; // la grille est pleine 
             }
         }
@@ -50,17 +50,30 @@ public class Grille {
     }
     public boolean celluleOccupee(int i, int j){
         if ( CellulesJeu[i][j]!= null){ // la cellule est occupée par un jeton
-
+            return true ;      
     }
+        return false;//la cellule n'est pas occupe par un jeton 
+    }
+    
     public String  lireCouleurDuJeton(int i, int j ){
-        if (CellulesJeu[i][j] == "jaune" ){
-            return "jaune";
+        if (CellulesJeu.lirecouleur ){
+            return "Jaune";
             
         }else{
-            return "rouge";
+            return "Rouge";
         }
     }
-
+    
+public boolean etreGagnantePourJoueur(Joueur joueur){
+    // le joueur qui est entrain de jouer
+    for (int i=0; i < 4; i++ ){// 6lignes
+            //for (int j=0; j < CellulesJeu[i].length; j++ ){// 7colonnes
+                CellulesJeu[i][j].jetonCourant = "Rouge";
+                
+            }
+}
+    
+    
 }
 
 
@@ -68,5 +81,3 @@ public class Grille {
 
 
 
-
-}
