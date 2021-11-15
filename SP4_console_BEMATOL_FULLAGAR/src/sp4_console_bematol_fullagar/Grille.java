@@ -55,8 +55,40 @@ public class Grille {
         }
     }   
     public void afficherGrilleSurConsole(){// affiche la grille sur la console 
-        
+        for (int i=5; i>=0; i--){// le nombre de lignes 
+            
+            for (int j=6; j>=0; j--){// le nombre de colones
+                System.out.println( i+1 + " ");// on affiche la ligne +1 car en java on commence a 0
+                if (CellulesJeu[i][j].trouNoir != false){
+                    System.out.println("O");
+                }
+                if(CellulesJeu[i][j].desintegrateur != false){
+                    System.out.println("D");
+                }
+                
+                if(CellulesJeu[i][j].jetonCourant==null){
+                    System.out.println("N");
+                }
+                
+                if(CellulesJeu[i][j].jetonCourant.Couleur == "Rouge"){
+                    System.out.println("R");
+                }
+                
+                if(CellulesJeu[i][j].jetonCourant.Couleur == "Jaune"){
+                    System.out.println("J");
+                }  
+        }
+            
+        }
+        for (int j=6; j<= 0; j++){
+            System.out.println(" " + j+1);// on affiche la colonne +1 car en java on commence a 0
+        }
+        // on affiche la grille globale 
     }
+    
+    
+    
+    
     public boolean celluleOccupee(int i, int j){
         if ( CellulesJeu[i][j]!= null){ // la cellule est occupée par un jeton
             return true ;      

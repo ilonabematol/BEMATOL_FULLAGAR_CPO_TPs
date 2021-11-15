@@ -14,6 +14,12 @@ public class SP4_console_BEMATOL_FULLAGAR {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        
+       Grille g = new Grille();
+       g.ajouterJetonDansColonne(jeton, 0);
+       g.afficherGrilleSurConsole();
+      
         // TODO code application logic here
     }
     
