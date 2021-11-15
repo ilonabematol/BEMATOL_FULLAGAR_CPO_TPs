@@ -4,6 +4,7 @@
  */
 package sp4_console_bematol_fullagar;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -16,7 +17,11 @@ public class Partie {
  Grille grilleJeu; // création de la référence objet grilleJeu
  
  
- Partie(Joueur j1, Joueur j2){
+ Partie(Joueur Joueur1, Joueur Joueur2){
+   
+     // on affecte les valeurs du tableau a chacun des deux joueurs
+    ListeJoueurs[0]=Joueur1;
+    ListeJoueurs[1]=Joueur2;
      
  }
  
@@ -28,28 +33,52 @@ public class Partie {
     Joueur Joueur1 = new Joueur(sc.nextLine()); // création des deux objets joueur
     System.out.println("Entrez le nom du Joueur 2 : "); 
     Joueur Joueur2 = new Joueur(sc.nextLine()); 
-    // on affecte les valeurs du tableau a chacun des deux joueurs
-    ListeJoueurs[1]=Joueur1;
-    ListeJoueurs[2]=Joueur2;
+ 
+    attribuerCouleursAuxJoueurs();
+    
     System.out.println(Joueur1.nom + " possède les jetons de couleur " + Joueur1.couleur);
     System.out.println(Joueur2.nom + " possède les jetons de couleur " + Joueur2.couleur);
     
-    
+    // on cherche mainenant a savoir qui va commencer
+    // on assimile les couleurs aléatoirement 
+    Random alea = new Random();
+    boolean R;
+    R= alea.nextBoolean();
+    if( R==true ){
+        if (Joueur1.couleur=="Rouge"){
+            
+        }else{
+            System.out.println( Joueur2.couleur + " commence");
+        }
+     
+        }
     
     for (int i=0; i<21; i++){ // on crée les jetons et on les affecte dans le tableau en les ajoutant
-        Jeton unJeton = new Jeton(Joueur1.couleur);
-        Joueur1.ajouterJeton(unJeton);
-        Jeton unAutreJeton = new Jeton(Joueur2.couleur);
-        Joueur2.ajouterJeton(unAutreJeton);
+        Jeton Jeton1 = new Jeton(Joueur1.couleur);
+        Joueur1.ajouterJeton(Jeton1);
+        Jeton Jeton2 = new Jeton(Joueur2.couleur);
+        Joueur2.ajouterJeton(Jeton2);
+     
+        
+        
+        
  }
+ // on place un trou noir 
+ // on génère 
+    int i = (int) (Math.random() * 5);// lignes 
+        //System.out.println(i);  
+    int j = (int)(Math.random() * 6);//colonnes
     
-    
-    
+   grilleJeu.placerTrouNoir(i, j);
+   
     
  }
  
  public void debuterPartie(){
    
+    
+     
+     
      
      
  }
@@ -61,12 +90,12 @@ public class Partie {
     boolean ChoixJoueur;// on initialise une variable aléatoire qui va nous aider a déterminer les couelurs des joueurs
     ChoixJoueur = alea.nextBoolean();// on génère un boolean aléatoire
     if (ChoixJoueur == true){
-        ListeJoueurs[1].couleur = "Jaune";// le joueur 1 est en jaune 
-        ListeJoueurs[2].couleur = "Rouge";// le joueur 2 est en rouge
+        ListeJoueurs[0].couleur = "Jaune";// le joueur 1 est en jaune 
+        ListeJoueurs[1].couleur = "Rouge";// le joueur 2 est en rouge
     }
     else {
-        ListeJoueurs[1].couleur = "Rouge";// le joueur 1 est en rouge 
-        ListeJoueurs[2].couleur = "Jaune";// le joueur 2 est en jaune 
+        ListeJoueurs[0].couleur = "Rouge";// le joueur 1 est en rouge 
+        ListeJoueurs[1].couleur = "Jaune";// le joueur 2 est en jaune 
     }
     
      
