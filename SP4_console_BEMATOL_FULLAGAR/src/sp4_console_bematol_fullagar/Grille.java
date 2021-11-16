@@ -102,13 +102,152 @@ public class Grille {
     
 public boolean etreGagnantePourJoueur(Joueur joueur){
     // le joueur qui est entrain de jouer
-    for (int i=0; i < 4; i++ ){// 6lignes
-            //for (int j=0; j < CellulesJeu[i].length; j++ ){// 7colonnes
-                //CellulesJeu[i][j].jetonCourant = "Rouge";
-                
+            // le joueur qui est entrain de jouer
+
+        // condition sur les lignes
+        for (int i = 0; i <= 5; i++) {// 6lignes (0 a 5)
+
+            for (int j = 0; j <= 3; j++) { // 4 premieres colonnes
+               
+                //cas des jetons rouges
+                if (CellulesJeu[i][j].jetonCourant.Couleur == "R") {
+                    int cpt = 1;
+
+                    for (int n = 1; n <= 3; n++) { //verifer les 3 cases autour
+                        if (CellulesJeu[i][j + n].jetonCourant.Couleur == "R") {
+                            cpt += 1; // indentation n jetons a cote  
+                        }
+                        if (cpt == 4) { //verifie si gagne
+                            return true; // si true alors joueur a gagne
+                        }
+
+                    }
+
+                }
+
+                //cas des jetons jaunes;
+                if (CellulesJeu[i][j].jetonCourant.Couleur == "J") {
+                    int cpt = 1;
+
+                    for (int n = 1; n <= 3; n++) { //verifer les 3 cases autour
+                        if (CellulesJeu[i][j + n].jetonCourant.Couleur == "J") {
+                            cpt += 1; // indentation n jetons a cote  
+                        }
+                        if (cpt == 4) { //verifie si gagne
+                            return true; // si true alors joueur a gagne
+                        }
+
+                    }
+
+                }
             }
-}
-public void tasserGrille(int j){// la colonne correspondante
+        }
+
+        // condition sur les colonnes
+        for (int i = 0; i <= 2; i++) {
+
+            for (int j = 0; j <= 6; j++) {
+                if (CellulesJeu[i][j].jetonCourant.Couleur == "R") {
+                    int cpt = 1;
+
+                    for (int n = 1; n <= 3; n++) { //verifer les 3 cases autour
+                        if (CellulesJeu[i + n][j].jetonCourant.Couleur == "R") {
+                            cpt += 1; // indentation n jetons a cote  
+                        }
+                        if (cpt == 4) { //verifie si gagne
+                            return true; // si true alors joueur rouge a gagne
+                        }
+                    }
+                }
+                //cas des jetons jaunes;
+
+                if (CellulesJeu[i][j].jetonCourant.Couleur == "J") {
+                    int cpt = 1;
+
+                    for (int n = 1; n <= 3; n++) { //verifer les 3 cases autour
+                        if (CellulesJeu[i + n][j].jetonCourant.Couleur == "J") {
+                            cpt += 1; // indentation n jetons a cote  
+                        }
+                        if (cpt == 4) { //verifie si gagne
+                            return true; // si true alors joueur Jaune a gagne
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        // condition sur les diagonales montante
+       
+        for (int i = 0; i <= 2; i++) {
+            for (int j = 0; j <= 3; j++) {
+                //cas rouge
+                if (CellulesJeu[i][j].jetonCourant.Couleur == "R") {
+                    int cpt = 1;
+                    for (int n = 1; n <= 3; n++) { //verifer les 3 cases autour
+                        if (CellulesJeu[i + n][j + n].jetonCourant.Couleur == "R") {
+                            cpt += 1; // indentation n jetons a cote  
+                        }
+                        if (cpt == 4) { //verifie si gagne
+                            return true; // si true alors joueur rouge a gagne
+                        }
+                    }
+                }
+                //cas jaune
+                if (CellulesJeu[i][j].jetonCourant.Couleur == "J") {
+                    int cpt = 1;
+                    for (int n = 1; n <= 3; n++) { //verifer les 3 cases autour
+                        if (CellulesJeu[i + n][j + n].jetonCourant.Couleur == "J") {
+                            cpt += 1; // indentation n jetons a cote  
+                        }
+                        if (cpt == 4) { //verifie si gagne
+                            return true; // si true alors joueur rouge a gagne
+                        }
+                    }
+                }
+               
+
+            }
+           
+
+        }
+        for(int i = 3 ; i<=5 ; i++){
+            for(int j = 0 ; j<= 3;j++){
+                //cas rouge
+                if (CellulesJeu[i][j].jetonCourant.Couleur == "R") {
+                    int cpt = 1;
+                    for (int n = 1; n <= 3; n++) { //verifer les 3 cases autour
+                        if (CellulesJeu[i - n][j + n].jetonCourant.Couleur == "R") {
+                            cpt += 1; // indentation n jetons a cote  
+                        }
+                        if (cpt == 4) { //verifie si gagne
+                            return true; // si true alors joueur rouge a gagne
+                        }
+                    }
+                }
+                //cas jaune
+                if (CellulesJeu[i][j].jetonCourant.Couleur == "J") {
+                    int cpt = 1;
+                    for (int n = 1; n <= 3; n++) { //verifer les 3 cases autour
+                        if (CellulesJeu[i - n][j + n].jetonCourant.Couleur == "J") {
+                            cpt += 1; // indentation n jetons a cote  
+                        }
+                        if (cpt == 4) { //verifie si gagne
+                            return true; // si true alors joueur rouge a gagne
+                        }
+                    }
+                }
+                     
+            }
+        }
+        return false; // si tout les if ne sont pas rempli alors personne n'a encore gagné
+       
+    }
+
+public void tasserGrille(int j){// la colonne correspondante RAJOUTER LE I CORRESPONDANT AUX LIGNES
     //permet de faire descendre d'une ligne lorsque qu'un jeton est impacté par un trou noir ou un désintégrateur 
     for (int i=4; i>0; i--){
          CellulesJeu[i][j].jetonCourant=CellulesJeu[i+1][j].jetonCourant;// chacune des cases prend la valeur de la case d'au dessus 

@@ -53,26 +53,47 @@ public class Partie {
      
         }
     
-    for (int i=0; i<21; i++){ // on crée les jetons et on les affecte dans le tableau en les ajoutant
+    /*for (int i=0; i<21; i++){ // on crée les jetons et on les affecte dans le tableau en les ajoutant
         Jeton Jeton1 = new Jeton(Joueur1.couleur);
         Joueur1.ajouterJeton(Jeton1);
         Jeton Jeton2 = new Jeton(Joueur2.couleur);
-        Joueur2.ajouterJeton(Jeton2);
-     
-        
-        
-        
- }
- // on place un trou noir 
- // on génère 
-    int i = (int) (Math.random() * 5);// lignes 
-        //System.out.println(i);  
-    int j = (int)(Math.random() * 6);//colonnes
+        Joueur2.ajouterJeton(Jeton2);*/
     
-   grilleJeu.placerTrouNoir(i, j);
+    
+    
+    
+    // on place un trou noir 
+ // on génère aléatoirement des coordonnées pour placer les trous noirs 
+ 
+    
+    for (int cmpt=0; cmpt<5; cmpt++){
+    int i = (int) (Math.random() * 5);// lignes  
+    int j = (int)(Math.random() * 6);//colonnes
+    grilleJeu.placerTrouNoir(i,j);
+}
+    
+    
+    // on place 3 désintégrateurs aléatoirement
+    // on génère aléatoirement des coordonnées pour placer les désintégrateurs
+ for (int cpt=0; cpt<3; cpt++){
+    int i = (int) (Math.random() * 5);// lignes  
+    int j = (int)(Math.random() * 6);//colonnes
+    grilleJeu.placerDesintegrateur(i,j);
+    
+}   
+    
+ // on place le désintégrateur 
+ // 
+ 
+ 
+    
+ }
+
+ 
+   
    
     
- }
+ 
  
  public void debuterPartie(){
    
