@@ -28,7 +28,7 @@ public class Partie {
  public void initialiserPartie(){
      grilleJeu.viderGrille();// on vide la grille pour recommencer une partie
      // on cherche maintenant a initialiser les deux joueurs
-    Grille[][] grillejeu = new Grille[][];
+    //grilleJeu[][] grillejeu = new grilleJeu[][];
     Scanner sc = new Scanner(System.in);
     System.out.println("Entrez le nom du Joueur 1 : ");
     Joueur Joueur1 = new Joueur(sc.nextLine()); // création des deux objets joueur
@@ -83,19 +83,22 @@ public class Partie {
     
 }   
     
- // on place le désintégrateur 
- // 
-for ( int cptd =0; cptd<2; cptd++) {
-    int i = (int) (Math.random() * 5);// lignes  
-    int j = (int)(Math.random() * 6);//colonnes
-    
-    if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
-        grilleJeu.placerDesintegrateur(i,j);
+ //on place le désintégrateur
+int ct=0;
+
+ while (ct<2){
+
+int i = (int) (Math.random() * 5);// lignes  
+int j = (int)(Math.random() * 6);//colonnes
+if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
+       grilleJeu.placerDesintegrateur(i,j);
+        ct+=1;
     }
+}
 }
  
     
- }
+ 
 
  
    
@@ -106,7 +109,50 @@ for ( int cptd =0; cptd<2; cptd++) {
  public void debuterPartie(){
    
     
-     
+     initialiserPartie(); // prepa de la grille
+
+    grilleJeu.etreGagnantePourJoueur(joueurCourant);
+
+    while(grilleJeu.etreGagnantePourJoueur(joueurCourant) == false){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Actions possibles : ");
+        System.out.println("1. Poser un jeton");
+        System.out.println("2. Désintégrer un jeton adverse");
+        System.out.println("3. Récupérer un jeton");
+
+        int Choix = sc.nextInt();
+            switch(Choix){
+
+                case 1:
+
+        System.out.println("Choisir colonne de 0 a 6");
+        int ChoixC = sc.nextInt(); //bien repérer sur tableau de 0 à 6 avec 7 cases
+
+        while (ChoixC <0 || ChoixC >6){ // verifie si sort de la grille
+            System.out.println("Colonne invalide. Réessayer.");
+            ChoixC = sc.nextInt();
+        }
+
+        if (grilleJeu.colonneRemplie(ChoixC) == true){ //verifie si tout les espace de jeton sont deja pris
+            System.out.println("Colonne remplie. Réessayer.");
+            ChoixC = sc.nextInt();
+
+    }
+
+        grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1] , ChoixC); //?
+
+        grilleJeu.afficherGrilleSurConsole();
+
+        case 2:
+            System.out.println("saisir la ligne du jeton a desintegrer");
+            int ligne = sc.nextInt(); 
+            System.out.println("saisir la colonne du jeton a desintegrer");
+            int colonne = sc.nextInt(); 
+
+            grilleJeu.supprimerJeton(ligne, colonne);
+
+}
+
      
      
      
