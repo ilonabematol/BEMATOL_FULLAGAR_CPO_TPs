@@ -14,7 +14,7 @@ public class Grille {
     public Grille(){
         for (int i=0; i < CellulesJeu.length; i++ ){// 6lignes
             for (int j=0; j < CellulesJeu[i].length; j++ ){// 7colonnes
-                CellulesJeu[i][j] = null;
+                CellulesJeu[i][j] = new Cellule();
         }
             }
     }
@@ -77,16 +77,16 @@ public class Grille {
                     System.out.print("R");
                 }
                 
-                if("Jaune".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
+                else if ("Jaune".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
                     System.out.print("J");
                 } 
-                if ("Cellule vide".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
+                else if ("Cellule vide".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
                     System.out.print("-");
                 }
         }
             
         }
-        for (int j=0; j<=6 ; j++){
+        for (int j=6; j>=0 ; j--){
             System.out.println(" " + j);// on affiche la colonne +1 car en java on commence a 0
         }
         // on affiche la grille globale 
