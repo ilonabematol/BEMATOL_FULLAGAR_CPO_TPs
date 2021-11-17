@@ -55,10 +55,10 @@ public class Grille {
         }
     }   
     public void afficherGrilleSurConsole(){// affiche la grille sur la console 
-        for (int i=0; i<=5; i++){// le nombre de lignes 
-            
-            for (int j=0; j<=6; j++){// le nombre de colones
-                System.out.print( i + " ");
+        for (int i=5; i>=0; i--){// le nombre de lignes 
+            System.out.print( "  "+ i + " ");
+            for (int j=6; j>=0; j--){// le nombre de colones
+                
                 //System.out.print("\n");// on affiche la ligne +1 car en java on commence a 0 ????
                 //if (CellulesJeu[i][j].presenceTrouNoir() != false){
                     //System.out.print("O");
@@ -81,15 +81,18 @@ public class Grille {
                     System.out.print("J");
                 } 
                 else if ("Cellule vide".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
-                    System.out.print("-");
+                    System.out.print("- ");
                 }
         }
+          System.out.println("  ");
+          
+        }
+        System.out.print("    ");
+        for (int j=0; j<=6 ; j++){
             
+            System.out.print("" +j+" ");// on affiche la colonne +1 car en java on commence a 0
         }
-        for (int j=6; j>=0 ; j--){
-            System.out.println(" " + j);// on affiche la colonne +1 car en java on commence a 0
-        }
-        // on affiche la grille globale 
+        
     }
     
     
