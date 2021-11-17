@@ -20,11 +20,11 @@ public class Grille {
     }
     public boolean ajouterJetonDansColonne(Jeton jeton , int j){//j correspond au numéro de la colonne
         // le jeton est placé dans la case la plus basse
-        if (CellulesJeu[5][j]!= null){
+        if (CellulesJeu[5][j].jetonCourant!= null){ 
            return false;// la colone est pleine  
         }else {
-            for(int i=5; i>0 ; i--){
-                if(CellulesJeu[i][j].jetonCourant== null){// la place libre dans la case la plus basse
+            for(int i=0; i<5 ; i++){ // i=0 pour poser le jeton en bas
+                if(CellulesJeu[i][j].jetonCourant == null){// la place libre dans la case la plus basse
                     CellulesJeu[i][j].affecterJeton(jeton); // le jeton est placé
                     return true; // le jeton a été placé
             }
@@ -57,7 +57,7 @@ public class Grille {
     public void afficherGrilleSurConsole(){// affiche la grille sur la console 
         for (int i=5; i>=0; i--){// le nombre de lignes 
             System.out.print( "  "+ i + " ");
-            for (int j=6; j>=0; j--){// le nombre de colones
+            for (int j=0; j<=6; j++){// le nombre de colones
                 
                 //System.out.print("\n");// on affiche la ligne +1 car en java on commence a 0 ????
                 //if (CellulesJeu[i][j].presenceTrouNoir() != false){
@@ -74,11 +74,11 @@ public class Grille {
                 //}
                 
                 if("Rouge".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
-                    System.out.print("R");
+                    System.out.print("R ");
                 }
                 
                 else if ("Jaune".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
-                    System.out.print("J");
+                    System.out.print("J ");
                 } 
                 else if ("Cellule vide".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
                     System.out.print("- ");
