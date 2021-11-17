@@ -90,7 +90,7 @@ public class Cellule {
             return jetonCourant.Couleur;// renvoie la couleur du jeton
             
         }else {
-            return "Cellule vide ";//pas de couleur dans la case 
+            return "Cellule vide";//pas de couleur dans la case 
         }
         
         

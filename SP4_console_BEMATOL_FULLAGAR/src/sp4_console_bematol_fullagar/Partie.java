@@ -28,6 +28,7 @@ public class Partie {
  public void initialiserPartie(){
      grilleJeu.viderGrille();// on vide la grille pour recommencer une partie
      // on cherche maintenant a initialiser les deux joueurs
+    Grille[][] grillejeu = new Grille[][];
     Scanner sc = new Scanner(System.in);
     System.out.println("Entrez le nom du Joueur 1 : ");
     Joueur Joueur1 = new Joueur(sc.nextLine()); // création des deux objets joueur
@@ -84,7 +85,14 @@ public class Partie {
     
  // on place le désintégrateur 
  // 
- 
+for ( int cptd =0; cptd<2; cptd++) {
+    int i = (int) (Math.random() * 5);// lignes  
+    int j = (int)(Math.random() * 6);//colonnes
+    
+    if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
+        grilleJeu.placerDesintegrateur(i,j);
+    }
+}
  
     
  }

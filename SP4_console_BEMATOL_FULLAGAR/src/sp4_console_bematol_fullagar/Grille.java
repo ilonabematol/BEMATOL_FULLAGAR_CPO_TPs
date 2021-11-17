@@ -55,33 +55,39 @@ public class Grille {
         }
     }   
     public void afficherGrilleSurConsole(){// affiche la grille sur la console 
-        for (int i=5; i>=0; i--){// le nombre de lignes 
+        for (int i=0; i<=5; i++){// le nombre de lignes 
             
-            for (int j=6; j>=0; j--){// le nombre de colones
-                System.out.println( i+1 + " ");// on affiche la ligne +1 car en java on commence a 0
-                if (CellulesJeu[i][j].trouNoir != false){
-                    System.out.println("O");
-                }
-                if(CellulesJeu[i][j].desintegrateur != false){
-                    System.out.println("D");
+            for (int j=0; j<=6; j++){// le nombre de colones
+                System.out.print( i + " ");
+                //System.out.print("\n");// on affiche la ligne +1 car en java on commence a 0 ????
+                //if (CellulesJeu[i][j].presenceTrouNoir() != false){
+                    //System.out.print("O");
+                    
+                
+                //}
+                //if(CellulesJeu[i][j].presenceDesintegrateur() != false){
+                    //System.out.print("D");
+                //}
+                
+                //if(CellulesJeu[i][j].lireCouleurDuJeton() == null){
+                    //System.out.print("N");
+                //}
+                
+                if("Rouge".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
+                    System.out.print("R");
                 }
                 
-                if(CellulesJeu[i][j].jetonCourant==null){
-                    System.out.println("N");
+                if("Jaune".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
+                    System.out.print("J");
+                } 
+                if ("Cellule vide".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
+                    System.out.print("-");
                 }
-                
-                if(CellulesJeu[i][j].jetonCourant.Couleur == "Rouge"){
-                    System.out.println("R");
-                }
-                
-                if(CellulesJeu[i][j].jetonCourant.Couleur == "Jaune"){
-                    System.out.println("J");
-                }  
         }
             
         }
-        for (int j=6; j<= 0; j++){
-            System.out.println(" " + j+1);// on affiche la colonne +1 car en java on commence a 0
+        for (int j=0; j<=6 ; j++){
+            System.out.println(" " + j);// on affiche la colonne +1 car en java on commence a 0
         }
         // on affiche la grille globale 
     }

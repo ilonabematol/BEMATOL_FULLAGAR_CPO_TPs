@@ -16,11 +16,33 @@ public class SP4_console_BEMATOL_FULLAGAR {
     public static void main(String[] args) {
         
         
-       Grille g = new Grille();
-       g.ajouterJetonDansColonne(jeton, 0);
-       g.afficherGrilleSurConsole();
-      
+       
+      /*int i = (int) (Math.random() * 5);// lignes  
+    int j = (int)(Math.random() * 6);
+    System.out.println(i);
+    System.out.println(j);*/
         // TODO code application logic here
+        
+        Jeton J = new Jeton ("Rouge");
+        System.out.println(J.lireCouleur());// test pour la méthode lire couleur 
+        
+        
+        Cellule C = new Cellule();
+        System.out.println(C.lireCouleurDuJeton());// methode Cellule ok fryy
+        
+        
+        
+        C.affecterJeton(J);
+        System.out.println(C.lireCouleurDuJeton());
+        
+        Grille g = new Grille();
+        g.afficherGrilleSurConsole();
+        
+        
+        
+        //g.ajouterJetonDansColonne(J, 1);
+        //g.afficherGrilleSurConsole();
+        
     }
     
 }
