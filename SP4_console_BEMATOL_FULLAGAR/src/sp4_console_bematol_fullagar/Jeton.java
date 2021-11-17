@@ -11,15 +11,15 @@ package sp4_console_bematol_fullagar;
 public class Jeton {
   
     String Couleur;
-    String CouleurJeton;
+    
 
 
 public Jeton(String couleur){
-    CouleurJeton = couleur;
+    Couleur = couleur;
 }
 
 public String lireCouleur(){
-    return CouleurJeton;
+    return Couleur;
 }
 
 }

@@ -36,12 +36,14 @@ public class SP4_console_BEMATOL_FULLAGAR {
         System.out.println(C.lireCouleurDuJeton());
         
         Grille g = new Grille();
+        //g.afficherGrilleSurConsole();
+        
+        
+        
+        g.ajouterJetonDansColonne(J,1);
+        g.ajouterJetonDansColonne(J,3);
         g.afficherGrilleSurConsole();
         
-        
-        
-        //g.ajouterJetonDansColonne(J, 1);
-        //g.afficherGrilleSurConsole();
         
     }
     
