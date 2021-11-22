@@ -31,6 +31,7 @@ public class Grille {
         }return false;
         
     }
+         
     }
     public boolean etreRemplie(){ 
         // on créer cette méthode pour voir si le tableau est rempli
@@ -256,7 +257,7 @@ public boolean etreGagnantePourJoueur(Joueur joueur){
        
     }
 
-public void tasserGrille(int j){// la colonne correspondante RAJOUTER LE I CORRESPONDANT AUX LIGNES
+public void tasserGrille( int j){// la colonne correspondante RAJOUTER LE I CORRESPONDANT AUX LIGNES
     //permet de faire descendre d'une ligne lorsque qu'un jeton est impacté par un trou noir ou un désintégrateur 
     for (int i=4; i>0; i--){
          CellulesJeu[i][j].jetonCourant=CellulesJeu[i+1][j].jetonCourant;// chacune des cases prend la valeur de la case d'au dessus 

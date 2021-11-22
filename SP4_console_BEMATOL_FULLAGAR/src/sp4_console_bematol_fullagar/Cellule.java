@@ -69,22 +69,12 @@ public class Cellule {
     }
     
     public boolean presenceTrouNoir(){
-        if (trouNoir == false ){// pas de trou noir 
-            //System.out.println("Trou Noir présent");
-            return false;
-          
-      }else {
-          //System.out.println("Trou Noir absent");  
-          return true;// il y aun trou noir 
-      }
+      return trouNoir;// renvoi true ou false suivant la valeur du désintégrateur 
     }
     public boolean presenceDesintegrateur(){
-        if (desintegrateur==true){ //il y a un désintégrateur 
-            return true; 
-        }else{
-            return false; // pas de désintégrateur 
-        }
+        return desintegrateur; // renvoie true ou false suivant la valeur du désintégrateur
     }
+    
     public String lireCouleurDuJeton(){
         if(jetonCourant != null ){
             return jetonCourant.Couleur;// renvoie la couleur du jeton

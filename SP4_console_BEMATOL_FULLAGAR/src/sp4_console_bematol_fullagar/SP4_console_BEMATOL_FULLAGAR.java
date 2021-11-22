@@ -4,6 +4,8 @@
  */
 package sp4_console_bematol_fullagar;
 
+import java.util.Scanner;
+
 /**
  *
  * @author ilonabematol
@@ -22,7 +24,7 @@ public class SP4_console_BEMATOL_FULLAGAR {
     System.out.println(i);
     System.out.println(j);*/
         // TODO code application logic here
-        
+       /* 
         Jeton J = new Jeton ("Rouge");
         System.out.println(J.lireCouleur());// test pour la méthode lire couleur 
         
@@ -43,7 +45,12 @@ public class SP4_console_BEMATOL_FULLAGAR {
         g.ajouterJetonDansColonne(J,1);
         g.ajouterJetonDansColonne(J,3);
         g.afficherGrilleSurConsole();
+        */
         
+        
+        Partie une_partie = new Partie();
+        une_partie.debuterPartie();
+
         
     }
     

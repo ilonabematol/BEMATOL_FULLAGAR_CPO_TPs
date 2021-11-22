@@ -22,4 +22,11 @@ public String lireCouleur(){
     return Couleur;
 }
 
+
+@Override
+public String toString(){
+    if ("Rouge".equals(Couleur))
+        return "\u001B[31m O";//affiche le jeton en rouge
+    return "\u001B[33m O";// l'affiche en jaune 
+}
 }
