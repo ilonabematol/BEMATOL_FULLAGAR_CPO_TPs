@@ -36,11 +36,20 @@ public class Partie {
     ListeJoueurs[0]=Joueur1;
     ListeJoueurs[1]=Joueur2;
     
+    
     attribuerCouleursAuxJoueurs();
     
     System.out.println(Joueur1.nom + " possède les jetons de couleur " + Joueur1.couleur);
     System.out.println(Joueur2.nom + " possède les jetons de couleur " + Joueur2.couleur);
     
+    
+    for(int i=0; i<21 ; i++ ){
+        Jeton JetonR = new Jeton("Rouge");// création des 21 jetons 
+        ListeJoueurs[0].ajouterJeton(JetonR);// affecte a chaque joueur ses 21 jeotn avce la couleur correspondante
+        Jeton JetonJ = new Jeton("Jaune");
+        //ListeJoueurs[1].ListeJetons[i]=JetonJ;
+        ListeJoueurs[1].ajouterJeton(JetonJ);
+    }
     // on cherche mainenant a savoir qui va commencer
     // on assimile les couleurs aléatoirement 
     Random alea = new Random();
@@ -52,14 +61,9 @@ public class Partie {
         }else{
         joueurCourant = ListeJoueurs[1];
             System.out.println( Joueur2.nom + " commence");
-        }
-     
-        
- 
+    }
     
-    
-    
-    
+   
     // on place un trou noir 
  // on génère aléatoirement des coordonnées pour placer les trous noirs 
 
@@ -99,6 +103,7 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
      initialiserPartie(); // prepa de la grille
 
     grilleJeu.etreGagnantePourJoueur(joueurCourant);
+    
 
     while(grilleJeu.etreGagnantePourJoueur(joueurCourant) == false){
         Scanner sc = new Scanner(System.in);
@@ -132,7 +137,6 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
         joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1] = null; // affecte la case du jeton comme utilise
         joueurCourant.nombreJetonsRestants -- ; // desindente le nombre de jeton restant
         grilleJeu.ajouterJetonDansColonne(Jetonj , ChoixC);
-
         grilleJeu.afficherGrilleSurConsole();
        
         // gestion des trous noir
@@ -145,9 +149,10 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
            grilleJeu.afficherGrilleSurConsole();
            */
         
-       
+       break;
 
         case 2:
+            
             System.out.println("Veuillez saisir les coordonnées du jeton a désintégrer :");
             System.out.println("saisir la ligne du jeton a desintegrer");
             int ligne = sc.nextInt(); 
@@ -171,7 +176,7 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
            }  
                
            
-         
+         break;
             
         case 3:
         //if(joueurCourant.nombreDesintegrateurs==0){
@@ -184,16 +189,25 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
             int colon = sc.nextInt();
             grilleJeu.supprimerJeton(line, colon);
             //joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants+1];
-            
+            break;
 }
 
      
-     
-     
+            if(joueurCourant == ListeJoueurs[0]){ //gestion des changement de tours
+                joueurCourant = ListeJoueurs[1];
+                System.out.println(" c'est au tour de "+joueurCourant.nom);
+            }else{
+                joueurCourant = ListeJoueurs[0];
+                System.out.println(" c'est au tour de "+joueurCourant.nom);
+            }
+     if (grilleJeu.etreGagnantePourJoueur(joueurCourant) == true){
+         System.out.println( "c'est "+ joueurCourant+"qui a gagné");
+     }
  }
     
+    
  
- 
+ }
  
  public void attribuerCouleursAuxJoueurs(){
     Random alea = new Random(); // attribution des joueurs au hasard
@@ -210,6 +224,6 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
     
      
  }  
- }
+}
  
 

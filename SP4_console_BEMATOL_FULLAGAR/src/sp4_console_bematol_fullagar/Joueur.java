@@ -15,7 +15,7 @@ public class Joueur {
     int nombreJetonsRestants;
     int nombreDesintegrateurs;
 public Joueur(String nomJoueur) {
-    nomJoueur=nom;
+    nom=nomJoueur;
     
     // dans le main
     //Scanner scanner = new Scanner(System.in);
@@ -32,6 +32,7 @@ public Joueur(String nomJoueur) {
         for(int i=0; i<21; i++ ){ //Parcours la site pour voir si un jeton est deja placé
             if(ListeJetons [i] == null){
                 ListeJetons [i] = ajoutJeton;
+                nombreJetonsRestants++;
                 return true;// le jeton a été placé
   
     } 

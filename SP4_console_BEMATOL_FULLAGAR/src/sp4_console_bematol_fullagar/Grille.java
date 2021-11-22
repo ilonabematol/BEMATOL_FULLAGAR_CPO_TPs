@@ -120,7 +120,7 @@ public boolean etreGagnantePourJoueur(Joueur joueur){
             for (int j = 0; j <= 3; j++) { // 4 premieres colonnes
                
                 //cas des jetons rouges
-                if (CellulesJeu[i][j].jetonCourant.Couleur == "R") {
+                if (CellulesJeu[i][j].jetonCourant !=null && CellulesJeu[i][j].jetonCourant.Couleur == "R") {
                     int cpt = 1;
 
                     for (int n = 1; n <= 3; n++) { //verifer les 3 cases autour
@@ -136,7 +136,7 @@ public boolean etreGagnantePourJoueur(Joueur joueur){
                 }
 
                 //cas des jetons jaunes;
-                if (CellulesJeu[i][j].jetonCourant.Couleur == "J") {
+                if (CellulesJeu[i][j].jetonCourant !=null &&CellulesJeu[i][j].jetonCourant.Couleur == "J") {
                     int cpt = 1;
 
                     for (int n = 1; n <= 3; n++) { //verifer les 3 cases autour
@@ -157,7 +157,7 @@ public boolean etreGagnantePourJoueur(Joueur joueur){
         for (int i = 0; i <= 2; i++) {
 
             for (int j = 0; j <= 6; j++) {
-                if (CellulesJeu[i][j].jetonCourant.Couleur == "R") {
+                if (CellulesJeu[i][j].jetonCourant !=null &&CellulesJeu[i][j].jetonCourant.Couleur == "R") {
                     int cpt = 1;
 
                     for (int n = 1; n <= 3; n++) { //verifer les 3 cases autour
@@ -171,7 +171,7 @@ public boolean etreGagnantePourJoueur(Joueur joueur){
                 }
                 //cas des jetons jaunes;
 
-                if (CellulesJeu[i][j].jetonCourant.Couleur == "J") {
+                if (CellulesJeu[i][j].jetonCourant != null && CellulesJeu[i][j].jetonCourant.Couleur == "J") {
                     int cpt = 1;
 
                     for (int n = 1; n <= 3; n++) { //verifer les 3 cases autour
@@ -195,7 +195,7 @@ public boolean etreGagnantePourJoueur(Joueur joueur){
         for (int i = 0; i <= 2; i++) {
             for (int j = 0; j <= 3; j++) {
                 //cas rouge
-                if (CellulesJeu[i][j].jetonCourant.Couleur == "R") {
+                if (CellulesJeu[i][j].jetonCourant !=null &&CellulesJeu[i][j].jetonCourant.Couleur == "R") {
                     int cpt = 1;
                     for (int n = 1; n <= 3; n++) { //verifer les 3 cases autour
                         if (CellulesJeu[i + n][j + n].jetonCourant.Couleur == "R") {
@@ -207,7 +207,7 @@ public boolean etreGagnantePourJoueur(Joueur joueur){
                     }
                 }
                 //cas jaune
-                if (CellulesJeu[i][j].jetonCourant.Couleur == "J") {
+                if (CellulesJeu[i][j].jetonCourant !=null && CellulesJeu[i][j].jetonCourant.Couleur == "J") {
                     int cpt = 1;
                     for (int n = 1; n <= 3; n++) { //verifer les 3 cases autour
                         if (CellulesJeu[i + n][j + n].jetonCourant.Couleur == "J") {
@@ -227,7 +227,7 @@ public boolean etreGagnantePourJoueur(Joueur joueur){
         for(int i = 3 ; i<=5 ; i++){
             for(int j = 0 ; j<= 3;j++){
                 //cas rouge
-                if (CellulesJeu[i][j].jetonCourant.Couleur == "R") {
+                if (CellulesJeu[i][j].jetonCourant !=null &&CellulesJeu[i][j].jetonCourant.Couleur == "R") {
                     int cpt = 1;
                     for (int n = 1; n <= 3; n++) { //verifer les 3 cases autour
                         if (CellulesJeu[i - n][j + n].jetonCourant.Couleur == "R") {
@@ -239,7 +239,7 @@ public boolean etreGagnantePourJoueur(Joueur joueur){
                     }
                 }
                 //cas jaune
-                if (CellulesJeu[i][j].jetonCourant.Couleur == "J") {
+                if (CellulesJeu[i][j].jetonCourant !=null &&CellulesJeu[i][j].jetonCourant.Couleur == "J") {
                     int cpt = 1;
                     for (int n = 1; n <= 3; n++) { //verifer les 3 cases autour
                         if (CellulesJeu[i - n][j + n].jetonCourant.Couleur == "J") {
@@ -254,6 +254,7 @@ public boolean etreGagnantePourJoueur(Joueur joueur){
             }
         }
         return false; // si tout les if ne sont pas rempli alors personne n'a encore gagné
+        
        
     }
 
@@ -268,15 +269,15 @@ public void tasserGrille( int j){// la colonne correspondante RAJOUTER LE I CORR
 
 public boolean colonneRemplie( int j ){// correspond à la colonne 
     // renvoie true si la colonne est remplie = on ne peut pas jouer de jeton
-    if (CellulesJeu[5][j]!= null ){
-       return true; // la colonne est remplie 
+    if (CellulesJeu[5][j].jetonCourant== null ){
+       return false; // la colonne est pas remplie 
     }
-    return false; // la colonne n'est pas remplie 
+    return true; // la colonne est remplie 
 }
 
 public boolean placerTrouNoir( int i , int j ){// i = nb de lignes j= nb colonnes 
     // test pour voir s'il n'y pas déja un trou noir a cet emplacement
-    if (CellulesJeu[i][j].trouNoir=false){// on vérifie si un trou noir est présent 
+    if (CellulesJeu[i][j].trouNoir==false){// on vérifie si un trou noir est présent 
     CellulesJeu[i][j].trouNoir=true; //on place le trou noir 
     return true; // le trou noir a été placé
    
