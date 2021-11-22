@@ -14,15 +14,13 @@ import java.util.Scanner;
 public class Partie {
  Joueur ListeJoueurs[]= new Joueur[2];// liste de 2 d'objet joueur à 2 cases
  Joueur joueurCourant;
- Grille grilleJeu; // création de la référence objet grilleJeu
+ Grille grilleJeu = new Grille(); // création de la référence objet grilleJeu
  
  
- Partie(Joueur Joueur1, Joueur Joueur2){
+ Partie(){
    
      // on affecte les valeurs du tableau a chacun des deux joueurs
-    ListeJoueurs[0]=Joueur1;
-    ListeJoueurs[1]=Joueur2;
-     
+  
  }
  
  public void initialiserPartie(){
@@ -33,8 +31,11 @@ public class Partie {
     System.out.println("Entrez le nom du Joueur 1 : ");
     Joueur Joueur1 = new Joueur(sc.nextLine()); // création des deux objets joueur
     System.out.println("Entrez le nom du Joueur 2 : "); 
-    Joueur Joueur2 = new Joueur(sc.nextLine()); 
- 
+    Joueur Joueur2 = new Joueur(sc.nextLine());
+        
+    ListeJoueurs[0]=Joueur1;
+    ListeJoueurs[1]=Joueur2;
+    
     attribuerCouleursAuxJoueurs();
     
     System.out.println(Joueur1.nom + " possède les jetons de couleur " + Joueur1.couleur);
@@ -46,27 +47,22 @@ public class Partie {
     boolean R;
     R= alea.nextBoolean();
     if( R==true ){
-        if (Joueur1.couleur=="Rouge"){
-            
+        joueurCourant= ListeJoueurs[0];
+            System.out.println( Joueur1.nom + " commence");
         }else{
-            System.out.println( Joueur2.couleur + " commence");
+        joueurCourant = ListeJoueurs[1];
+            System.out.println( Joueur2.nom + " commence");
         }
      
-        }
-    
-    /*for (int i=0; i<21; i++){ // on crée les jetons et on les affecte dans le tableau en les ajoutant
-        Jeton Jeton1 = new Jeton(Joueur1.couleur);
-        Joueur1.ajouterJeton(Jeton1);
-        Jeton Jeton2 = new Jeton(Joueur2.couleur);
-        Joueur2.ajouterJeton(Jeton2);*/
+        
+ 
     
     
     
     
     // on place un trou noir 
  // on génère aléatoirement des coordonnées pour placer les trous noirs 
- 
-    
+
     for (int cmpt=0; cmpt<5; cmpt++){
     int i = (int) (Math.random() * 5);// lignes  
     int j = (int)(Math.random() * 6);//colonnes
@@ -96,16 +92,7 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
     }
 }
 }
- 
-    
- 
 
- 
-   
-   
-    
- 
- 
  public void debuterPartie(){
    
     
@@ -139,24 +126,72 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
 
     }
 
-        grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1] , ChoixC); //?
+        // recupere 1 jeton de sa liste
+       
+        Jeton Jetonj = joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1];
+        joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1] = null; // affecte la case du jeton comme utilise
+        joueurCourant.nombreJetonsRestants -- ; // desindente le nombre de jeton restant
+        grilleJeu.ajouterJetonDansColonne(Jetonj , ChoixC);
 
         grilleJeu.afficherGrilleSurConsole();
+       
+        // gestion des trous noir
+       
+        /*if(grilleJeu.CellulesJeu[][ChoixC].presenceTrouNoir() ==true);
+        
+        
+        if(grilleJeu.presenceTrouNoir() ==true){
+           CellulesJeu.jetonCourant.activerTrouNoir();
+           grilleJeu.afficherGrilleSurConsole();
+           */
+        
+       
 
         case 2:
+            System.out.println("Veuillez saisir les coordonnées du jeton a désintégrer :");
             System.out.println("saisir la ligne du jeton a desintegrer");
             int ligne = sc.nextInt(); 
+            while (ligne > 5 || ligne < 0) {
+    System.out.println("Erreur: veuillez saisir une ligne valide:");
+    
+           }
             System.out.println("saisir la colonne du jeton a desintegrer");
             int colonne = sc.nextInt(); 
+            while (colonne > 5 || colonne < 0) {
+    System.out.println("Erreur: veuillez saisir une ligne valide:");
+    
+}
 
             grilleJeu.supprimerJeton(ligne, colonne);
-
+            grilleJeu.recupererJeton(ligne, colonne);
+            grilleJeu.tasserGrille(colonne);
+           if(grilleJeu.etreGagnantePourJoueur(joueurCourant) == true){// codition si ca gagne ou pas ?? genre en mode le joueur qui a recup fait un puissance 4 pour adversaire bah il perd
+            
+           
+           }  
+               
+           
+         
+            
+        case 3:
+        //if(joueurCourant.nombreDesintegrateurs==0){
+                    //return false;
+           //}
+           // condition le joueur doit avoir un desintegrateur ya pas de methode qui correspond !!!!!!!!!!!!!!
+            System.out.println("saisir la ligne du jeton a récuperer");
+            int line = sc.nextInt();
+            System.out.println("saisir la colonne du jeton a récuperer");
+            int colon = sc.nextInt();
+            grilleJeu.supprimerJeton(line, colon);
+            //joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants+1];
+            
 }
 
      
      
      
  }
+    
  
  
  
@@ -174,7 +209,7 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
     }
     
      
-     
+ }  
  }
  
-}
+
