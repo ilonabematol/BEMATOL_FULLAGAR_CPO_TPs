@@ -170,10 +170,10 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
             grilleJeu.supprimerJeton(ligne, colonne);
             grilleJeu.recupererJeton(ligne, colonne);
             grilleJeu.tasserGrille(colonne);
-           if(grilleJeu.etreGagnantePourJoueur(joueurCourant) == true){// codition si ca gagne ou pas ?? genre en mode le joueur qui a recup fait un puissance 4 pour adversaire bah il perd
+           //if(grilleJeu.etreGagnantePourJoueur(joueurCourant) == true){// codition si ca gagne ou pas ?? genre en mode le joueur qui a recup fait un puissance 4 pour adversaire bah il perd
             
            
-           }  
+           //}  
                
            
          break;
@@ -201,7 +201,7 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
                 System.out.println(" c'est au tour de "+joueurCourant.nom);
             }
      if (grilleJeu.etreGagnantePourJoueur(joueurCourant) == true){
-         System.out.println( "c'est "+ joueurCourant+"qui a gagné");
+         System.out.println( "c'est "+ joueurCourant.nom+"qui a gagné");
      }
  }
     
