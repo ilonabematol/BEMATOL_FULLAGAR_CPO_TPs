@@ -174,7 +174,7 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
             
            
            //}  
-               
+             grilleJeu.afficherGrilleSurConsole();  
            
          break;
             
@@ -189,6 +189,7 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
             int colon = sc.nextInt();
             grilleJeu.supprimerJeton(line, colon);
             //joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants+1];
+            grilleJeu.afficherGrilleSurConsole();
             break;
 }
 
