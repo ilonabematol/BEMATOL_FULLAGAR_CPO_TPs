@@ -10,6 +10,10 @@ package sp4_console_bematol_fullagar;
  */
 public class Grille {
     Cellule CellulesJeu[][]= new Cellule[6][7];// on créé la grille
+    // point important : la cellule d'indice [0][0] est située en bas à gauche 
+    // sur le plateau réel - par convention 
+    
+    
     
     public Grille(){
         for (int i=0; i < CellulesJeu.length; i++ ){// 6lignes
@@ -60,29 +64,23 @@ public class Grille {
             System.out.print( "  "+ i + " ");
             for (int j=0; j<=6; j++){// le nombre de colones
                 
-                //System.out.print("\n");// on affiche la ligne +1 car en java on commence a 0 ????
-                //if (CellulesJeu[i][j].presenceTrouNoir() != false){
-                    //System.out.print("O");
-                    
-                
-                //}
-                //if(CellulesJeu[i][j].presenceDesintegrateur() != false){
-                    //System.out.print("D");
-                //}
-                
-                //if(CellulesJeu[i][j].lireCouleurDuJeton() == null){
-                    //System.out.print("N");
-                //}
+               if(CellulesJeu[i][j].trouNoir){
+                    System.out.print("\u001B[0mT");
+                }
+                  else if (CellulesJeu[i][j].desintegrateur) {
+                    System.out.print("\u001B[0mD");
+                }
                 
                 if("Rouge".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
-                    System.out.print("R ");
+                    System.out.print("\u001B[31mR");
                 }
                 
                 else if ("Jaune".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
-                    System.out.print("J ");
+                    System.out.print("\u001B[33mJ");
                 } 
                 else if ("Cellule vide".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
-                    System.out.print("- ");
+                    ///System.out.print("- ");
+                    System.out.print("\u001B[0m - ");
                 }
         }
           System.out.println("  ");
@@ -100,7 +98,7 @@ public class Grille {
     
     
     public boolean celluleOccupee(int i, int j){
-        if ( CellulesJeu[i][j]!= null){ // la cellule est occupée par un jeton
+        if ( CellulesJeu[i][j].jetonCourant!= null){ // la cellule est occupée par un jeton
             return true ;      
     }
         return false;//la cellule n'est pas occupe par un jeton 
@@ -304,8 +302,8 @@ public boolean supprimerJeton(int i , int j){// i = nb de lignes j= nb colonnes
     }
 }
 public Jeton recupererJeton(int i, int j ){// i = nb de lignes j= nb colonnes
-    Jeton recupJeton = CellulesJeu[i][j].jetonCourant;// on créé une nouvelle variable qui va recuperer les coordonées du jeton à récuperer
-    CellulesJeu[i][j].jetonCourant= null;// on enleve le jeton en initialisant null
+    Jeton recupJeton = CellulesJeu[i][j].recupererJeton();// on créé une nouvelle variable qui va recuperer les coordonées du jeton à récuperer
+    CellulesJeu[i][j].supprimerJeton();// on enleve le jeton en initialisant null
     return recupJeton; // on renvoit les coordonnées du jeton que l'on supprime de la grille 
 }
 }

@@ -16,12 +16,7 @@ public class Joueur {
     int nombreDesintegrateurs;
 public Joueur(String nomJoueur) {
     nom=nomJoueur;
-    
-    // dans le main
-    //Scanner scanner = new Scanner(System.in);
-    //System.out.println("Entrer votre nom: ");
-    //String nom = Scanner.nextString();
-    //System.out.println(nom);
+   
 
 }
 
