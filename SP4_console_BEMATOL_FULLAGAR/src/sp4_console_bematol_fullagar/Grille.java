@@ -256,14 +256,35 @@ public boolean etreGagnantePourJoueur(Joueur joueur){
        
     }
 
-public void tasserGrille( int j){// la colonne correspondante RAJOUTER LE I CORRESPONDANT AUX LIGNES
+/*public void tasserGrille( int j){// la colonne correspondante RAJOUTER LE I CORRESPONDANT AUX LIGNES
     //permet de faire descendre d'une ligne lorsque qu'un jeton est impacté par un trou noir ou un désintégrateur 
     for (int i=4; i>0; i--){
          CellulesJeu[i][j].jetonCourant=CellulesJeu[i+1][j].jetonCourant;// chacune des cases prend la valeur de la case d'au dessus 
     }
       int i=5;
             CellulesJeu[i][j].jetonCourant = null; // on est sur la plus haute ligne du tableau, cela ne décale rien. On initialise juste la cellule
+        }*/
+
+void tasserGrille() {
+        for (int i = 0; i < 7; i++) {
+           tasserColonne(i);
         }
+    }
+    
+    
+       void tasserColonne(int colonne) {
+        for (int i = 0; i < 6; i++) {
+            if (i == 5) {
+                CellulesJeu[i][colonne].jetonCourant = null;
+            } else {
+                if (CellulesJeu[i][colonne].jetonCourant  == null) {
+                  CellulesJeu[i][colonne].jetonCourant = CellulesJeu[i + 1][colonne].jetonCourant;
+                  CellulesJeu[i + 1][colonne].jetonCourant=null;
+                }
+            }
+
+        }
+    }
 
 public boolean colonneRemplie( int j ){// correspond à la colonne 
     // renvoie true si la colonne est remplie = on ne peut pas jouer de jeton

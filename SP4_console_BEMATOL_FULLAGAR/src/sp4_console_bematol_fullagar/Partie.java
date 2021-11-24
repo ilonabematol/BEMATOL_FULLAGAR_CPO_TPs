@@ -221,7 +221,7 @@ if (grilleJeu.CellulesJeu[ligne][colonne].jetonCourant != null && !grilleJeu.Cel
             if (grilleJeu.CellulesJeu[line][colon].jetonCourant != null && grilleJeu.CellulesJeu[line][colon].lireCouleurDuJeton().equals(joueurCourant.couleur)) {
             grilleJeu.recupererJeton(line, colon);
             joueurCourant.ajouterJeton(grilleJeu.recupererJeton(line, colon));
-            grilleJeu.tasserGrille(colon);
+            grilleJeu.tasserGrille();
             //joueurCourant.ajouterJeton(G.Cellules[line][colon].recupererJeton());
                
             
