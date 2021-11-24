@@ -323,6 +323,7 @@ public class fenetreDejeu extends javax.swing.JFrame {
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
         panneau_infos_joueurs.setVisible(true);
         panneau_infos_partie.setVisible(true);
+        initialiserPartie();
     }//GEN-LAST:event_btn_startActionPerformed
 
     /**
@@ -401,14 +402,7 @@ public class fenetreDejeu extends javax.swing.JFrame {
     }
     
    
-   /* // on place un trou noir 
- // on génère aléatoirement des coordonnées pour placer les trous noirs 
 
-    for (int cmpt=0; cmpt<5; cmpt++){
-    int i = (int) (Math.random() * 5);// lignes  
-    int j = (int)(Math.random() * 6);//colonnes
-    grilleJeu.placerTrouNoir(i,j);
-}*/
     
     
     // on place 3 désintégrateurs aléatoirement
@@ -439,17 +433,7 @@ public class fenetreDejeu extends javax.swing.JFrame {
             }
         }
         
-/*int ct=0;
 
- while (ct<2){
-
-int i = (int) (Math.random() * 5);// lignes  
-int j = (int)(Math.random() * 6);//colonnes
-if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
-       grilleJeu.placerDesintegrateur(i,j);
-        ct+=1;
-    }
-}*/
 }
     
     public void attribuerCouleursAuxJoueurs(){

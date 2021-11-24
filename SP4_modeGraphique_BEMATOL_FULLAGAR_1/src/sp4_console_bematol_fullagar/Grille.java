@@ -10,6 +10,10 @@ package sp4_console_bematol_fullagar;
  */
 public class Grille {
     Cellule CellulesJeu[][]= new Cellule[6][7];// on créé la grille
+    // point important : la cellule d'indice [0][0] est située en bas à gauche 
+    // sur le plateau réel - par convention 
+    
+    
     
     public Grille(){
         for (int i=0; i < CellulesJeu.length; i++ ){// 6lignes
@@ -60,29 +64,23 @@ public class Grille {
             System.out.print( "  "+ i + " ");
             for (int j=0; j<=6; j++){// le nombre de colones
                 
-                //System.out.print("\n");// on affiche la ligne +1 car en java on commence a 0 ????
-                //if (CellulesJeu[i][j].presenceTrouNoir() != false){
-                    //System.out.print("O");
-                    
+               if(CellulesJeu[i][j].trouNoir){
+                    System.out.print("\u001B[0m T ");
+                }
+                  else if (CellulesJeu[i][j].desintegrateur ) {
+                    System.out.print("\u001B[0m D ");
+                }
                 
-                //}
-                //if(CellulesJeu[i][j].presenceDesintegrateur() != false){
-                    //System.out.print("D");
-                //}
-                
-                //if(CellulesJeu[i][j].lireCouleurDuJeton() == null){
-                    //System.out.print("N");
-                //}
-                
-                if("Rouge".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
-                    System.out.print("R ");
+                  else if("Rouge".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
+                    System.out.print("\u001B[31m R ");
                 }
                 
                 else if ("Jaune".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
-                    System.out.print("J ");
+                    System.out.print("\u001B[33m J ");
                 } 
                 else if ("Cellule vide".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
-                    System.out.print("- ");
+                    ///System.out.print("- ");
+                    System.out.print("\u001B[0m - ");
                 }
         }
           System.out.println("  ");
@@ -91,7 +89,7 @@ public class Grille {
         System.out.print("    ");
         for (int j=0; j<=6 ; j++){
             
-            System.out.print("" +j+" ");// on affiche la colonne +1 car en java on commence a 0
+            System.out.print(" " +j+" ");// on affiche la colonne +1 car en java on commence a 0
         }
         
     }
@@ -100,7 +98,7 @@ public class Grille {
     
     
     public boolean celluleOccupee(int i, int j){
-        if ( CellulesJeu[i][j]!= null){ // la cellule est occupée par un jeton
+        if ( CellulesJeu[i][j].jetonCourant!= null){ // la cellule est occupée par un jeton
             return true ;      
     }
         return false;//la cellule n'est pas occupe par un jeton 
@@ -258,14 +256,35 @@ public boolean etreGagnantePourJoueur(Joueur joueur){
        
     }
 
-public void tasserGrille( int j){// la colonne correspondante RAJOUTER LE I CORRESPONDANT AUX LIGNES
+/*public void tasserGrille( int j){// la colonne correspondante RAJOUTER LE I CORRESPONDANT AUX LIGNES
     //permet de faire descendre d'une ligne lorsque qu'un jeton est impacté par un trou noir ou un désintégrateur 
     for (int i=4; i>0; i--){
          CellulesJeu[i][j].jetonCourant=CellulesJeu[i+1][j].jetonCourant;// chacune des cases prend la valeur de la case d'au dessus 
     }
       int i=5;
             CellulesJeu[i][j].jetonCourant = null; // on est sur la plus haute ligne du tableau, cela ne décale rien. On initialise juste la cellule
+        }*/
+
+void tasserGrille() {
+        for (int i = 0; i < 7; i++) {
+           tasserColonne(i);
         }
+    }
+    
+    
+       void tasserColonne(int colonne) {
+        for (int i = 0; i < 6; i++) {
+            if (i == 5) {
+                CellulesJeu[i][colonne].jetonCourant = null;
+            } else {
+                if (CellulesJeu[i][colonne].jetonCourant  == null) {
+                  CellulesJeu[i][colonne].jetonCourant = CellulesJeu[i + 1][colonne].jetonCourant;
+                  CellulesJeu[i + 1][colonne].jetonCourant=null;
+                }
+            }
+
+        }
+    }
 
 public boolean colonneRemplie( int j ){// correspond à la colonne 
     // renvoie true si la colonne est remplie = on ne peut pas jouer de jeton
@@ -287,7 +306,7 @@ public boolean placerTrouNoir( int i , int j ){// i = nb de lignes j= nb colonne
 }
 public boolean placerDesintegrateur( int i , int j ){// i = nb de lignes j= nb colonnes 
     // test pour voir s'il n'y pas déja un désintégrateur a cet emplacement
-    if (CellulesJeu[i][j].desintegrateur=false){
+    if (CellulesJeu[i][j].desintegrateur==false){
         CellulesJeu[i][j].desintegrateur=true; // on place le désintégrateur
         return true; // le désintégrateur a été placé 
     }else {
@@ -304,21 +323,8 @@ public boolean supprimerJeton(int i , int j){// i = nb de lignes j= nb colonnes
     }
 }
 public Jeton recupererJeton(int i, int j ){// i = nb de lignes j= nb colonnes
-    Jeton recupJeton = CellulesJeu[i][j].jetonCourant;// on créé une nouvelle variable qui va recuperer les coordonées du jeton à récuperer
-    CellulesJeu[i][j].jetonCourant= null;// on enleve le jeton en initialisant null
+    Jeton recupJeton = CellulesJeu[i][j].recupererJeton();// on créé une nouvelle variable qui va recuperer les coordonées du jeton à récuperer
+    CellulesJeu[i][j].supprimerJeton();// on enleve le jeton en initialisant null
     return recupJeton; // on renvoit les coordonnées du jeton que l'on supprime de la grille 
 }
 }
-
-
-    
-
-    
-    
-
-
-
-
-
-
-
