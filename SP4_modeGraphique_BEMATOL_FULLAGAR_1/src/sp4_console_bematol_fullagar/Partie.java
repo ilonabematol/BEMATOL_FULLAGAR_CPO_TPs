@@ -43,6 +43,8 @@ public class Partie {
     System.out.println(Joueur1.nom + " possède les jetons de couleur " + Joueur1.couleur);
     System.out.println(Joueur2.nom + " possède les jetons de couleur " + Joueur2.couleur);
     
+    
+    
     //on donne les jetons aux joueurs
     for(int i=0; i<21 ; i++ ){
         Jeton JetonR = new Jeton("Rouge");// création des 21 jetons 
@@ -72,7 +74,7 @@ public class Partie {
  for (int cpt=0; cpt<3; cpt++){
     int i = (int) (Math.random() * 5);// lignes  
     int j = (int)(Math.random() * 6);//colonnes
-    if(!grilleJeu.placerDesintegrateur(i, j)|| grilleJeu.CellulesJeu[i][j]!=null){
+    if(!grilleJeu.placerDesintegrateur(i, j)|| grilleJeu.CellulesJeu[i][j]!=null && grilleJeu.CellulesJeu[i][j].presenceTrouNoir()==false ){
         i--;
     }
     
