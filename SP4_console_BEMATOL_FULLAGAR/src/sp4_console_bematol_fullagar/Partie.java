@@ -185,7 +185,7 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
 if (grilleJeu.CellulesJeu[ligne][colonne].jetonCourant != null && !grilleJeu.CellulesJeu[ligne][colonne].lireCouleurDuJeton().equals(joueurCourant.couleur)) {
             grilleJeu.supprimerJeton(ligne, colonne);
             grilleJeu.recupererJeton(ligne, colonne);
-            grilleJeu.tasserGrille(colonne);
+            grilleJeu.tasserGrille();
             
             joueurCourant.utiliserDesintegrateur();
             
