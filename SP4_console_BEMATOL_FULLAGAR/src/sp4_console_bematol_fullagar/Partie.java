@@ -197,11 +197,8 @@ if (grilleJeu.CellulesJeu[ligne][colonne].jetonCourant != null && !grilleJeu.Cel
          break;
             
         case 3:// recuperer un jeton 
-        if(joueurCourant.nombreDesintegrateurs==0){
-                   System.out.println("vous n'avez pas de désintégrateur impossible de jouer " );
-                   break;
-          }
-           // condition le joueur doit avoir un desintegrateur ya pas de methode qui correspond !!!!!!!!!!!!!!
+        
+          
             System.out.println("saisir la ligne du jeton a récuperer");
             int line = sc.nextInt();
              while (line > 5 || line < 0) {
@@ -211,24 +208,25 @@ if (grilleJeu.CellulesJeu[ligne][colonne].jetonCourant != null && !grilleJeu.Cel
              
              
             System.out.println("saisir la colonne du jeton a récuperer");
-            int colon = sc.nextInt()-1;
+            int colon = sc.nextInt();
             while (colon > 6 || colon < 0) {
             System.out.println("Erreur : veuillez saisir une colonne valide :");
-            colon = sc.nextInt() - 1;
+            colon = sc.nextInt() ;
         }
             
             
             //grilleJeu.supprimerJeton(line, colon);
-            //grilleJeu.afficherGrilleSurConsole();
+            
             
             if (grilleJeu.CellulesJeu[line][colon].jetonCourant != null && grilleJeu.CellulesJeu[line][colon].lireCouleurDuJeton().equals(joueurCourant.couleur)) {
-            //G.recupererJeton(line, colon);
+            grilleJeu.recupererJeton(line, colon);
             joueurCourant.ajouterJeton(grilleJeu.recupererJeton(line, colon));
             grilleJeu.tasserGrille(colon);
             //joueurCourant.ajouterJeton(G.Cellules[line][colon].recupererJeton());
-
+               
             
         } 
+            grilleJeu.afficherGrilleSurConsole();
              break;
     }
            
