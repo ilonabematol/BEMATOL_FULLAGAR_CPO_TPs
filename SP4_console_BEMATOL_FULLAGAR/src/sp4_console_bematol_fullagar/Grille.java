@@ -65,18 +65,18 @@ public class Grille {
             for (int j=0; j<=6; j++){// le nombre de colones
                 
                if(CellulesJeu[i][j].trouNoir){
-                    System.out.print("\u001B[0mT");
+                    System.out.print("\u001B[0m T ");
                 }
-                  else if (CellulesJeu[i][j].desintegrateur) {
-                    System.out.print("\u001B[0mD");
+                  else if (CellulesJeu[i][j].desintegrateur ) {
+                    System.out.print("\u001B[0m D ");
                 }
                 
-                if("Rouge".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
-                    System.out.print("\u001B[31mR");
+                  else if("Rouge".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
+                    System.out.print("\u001B[31m R ");
                 }
                 
                 else if ("Jaune".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
-                    System.out.print("\u001B[33mJ");
+                    System.out.print("\u001B[33m J ");
                 } 
                 else if ("Cellule vide".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
                     ///System.out.print("- ");
@@ -89,7 +89,7 @@ public class Grille {
         System.out.print("    ");
         for (int j=0; j<=6 ; j++){
             
-            System.out.print("" +j+" ");// on affiche la colonne +1 car en java on commence a 0
+            System.out.print(" " +j+" ");// on affiche la colonne +1 car en java on commence a 0
         }
         
     }
@@ -285,7 +285,7 @@ public boolean placerTrouNoir( int i , int j ){// i = nb de lignes j= nb colonne
 }
 public boolean placerDesintegrateur( int i , int j ){// i = nb de lignes j= nb colonnes 
     // test pour voir s'il n'y pas déja un désintégrateur a cet emplacement
-    if (CellulesJeu[i][j].desintegrateur=false){
+    if (CellulesJeu[i][j].desintegrateur==false){
         CellulesJeu[i][j].desintegrateur=true; // on place le désintégrateur
         return true; // le désintégrateur a été placé 
     }else {

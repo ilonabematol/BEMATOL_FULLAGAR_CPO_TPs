@@ -65,24 +65,39 @@ public class Partie {
     }
     
    
-    // on place un trou noir 
- // on génère aléatoirement des coordonnées pour placer les trous noirs 
+    
 
-    for (int cmpt=0; cmpt<5; cmpt++){
-    int i = (int) (Math.random() * 5);// lignes  
-    int j = (int)(Math.random() * 6);//colonnes
-    grilleJeu.placerTrouNoir(i,j);
-}
-    
-    
     // on place 3 désintégrateurs aléatoirement
     // on génère aléatoirement des coordonnées pour placer les désintégrateurs
  for (int cpt=0; cpt<3; cpt++){
     int i = (int) (Math.random() * 5);// lignes  
     int j = (int)(Math.random() * 6);//colonnes
-    grilleJeu.placerDesintegrateur(i,j);
+    if(!grilleJeu.placerDesintegrateur(i, j)|| grilleJeu.CellulesJeu[i][j]!=null){
+        i--;
+    }
     
 }   
+    
+    
+    //Génération des 5 trous noirs et de 2 désintégrateurs sur les trous noirs
+    Random position = new Random();
+        int compteur = 0;
+        for (int i = 0; i < 5; i++) {
+            int lig = position.nextInt(5);
+            int col = position.nextInt(6);
+            if (compteur < 2) {
+                if (!grilleJeu.placerDesintegrateur(lig, col)) {
+                    compteur--;
+                }
+                compteur++;
+            }
+            if (!grilleJeu.placerTrouNoir(lig, col)) {
+                i--;
+            }
+        }
+        grilleJeu.afficherGrilleSurConsole();
+    
+   
     
  //on place le désintégrateur
 int ct=0;
