@@ -97,7 +97,7 @@ public class Cellule {
     
     public boolean activerTrouNoir(){
         // si il y a un trou noir alors vide la cellule et fait disparaitre le trou noir, sinon ne fait rien
-       if(trouNoir = true){ // présence d'un trou noir 
+       if(trouNoir == true){ // présence d'un trou noir 
         jetonCourant=null; // on enlève le jeton
         trouNoir = false; // disparition du Trou Noir
         return true;  
