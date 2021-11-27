@@ -146,15 +146,23 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
         if (grilleJeu.colonneRemplie(ChoixC) == true){ //verifie si tout les espace de jeton sont deja pris
             System.out.println("Colonne remplie. Réessayer.");
             ChoixC = sc.nextInt();
-
+            
     }
-
+      
+        
+        boolean resultatAction = grilleJeu.ajouterJetonDansColonne(joueurCourant, ChoixC);
+        while (!resultatAction){
+            System.out.println("La colonne est pleine veuillez : ");
+            ChoixC=sc.nextInt();
+            resultatAction = grilleJeu.ajouterJetonDansColonne(joueurCourant, ChoixC);
+            
+        }
         // recupere 1 jeton de sa liste
        
         Jeton Jetonj = joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1];
         joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1] = null; // affecte la case du jeton comme utilise
         joueurCourant.nombreJetonsRestants -- ; // desindente le nombre de jeton restant
-        grilleJeu.ajouterJetonDansColonne(Jetonj , ChoixC);
+        grilleJeu.ajouterJetonDansColonne(joueurCourant , ChoixC);
         grilleJeu.afficherGrilleSurConsole();
        
         // gestion des trous noir
@@ -166,6 +174,8 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
            CellulesJeu.jetonCourant.activerTrouNoir();
            grilleJeu.afficherGrilleSurConsole();
            */
+        
+        
         
        break;
 

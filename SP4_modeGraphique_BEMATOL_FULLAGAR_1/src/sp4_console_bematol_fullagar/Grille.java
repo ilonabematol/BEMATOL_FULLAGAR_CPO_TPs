@@ -22,7 +22,7 @@ public class Grille {
         }
             }
     }
-    public boolean ajouterJetonDansColonne(Jeton jeton , int j){//j correspond au numéro de la colonne
+    /*public boolean ajouterJetonDansColonne(Joueur joueurCourant , int j){//j correspond au numéro de la colonne
         // le jeton est placé dans la case la plus basse
         if (CellulesJeu[5][j].jetonCourant!= null){ 
            return false;// la colone est pleine  
@@ -36,7 +36,42 @@ public class Grille {
         
     }
          
-    }
+    }*/
+    
+        public boolean ajouterJetonDansColonne(Joueur joueurCourant , int j){//j correspond au numéro de la colonne 
+        // le jeton est placé dans la case la plus basse 
+        
+        Jeton Jetonj = joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1];
+        CellulesJeu[5][j].jetonCourant = Jetonj;
+        
+        
+        if (CellulesJeu[5][j].jetonCourant!= null){  
+           return false;// la colone est pleine   
+ 
+            
+        }else { 
+            for(int i=0; i<=5 ; i++){ // i=0 pour poser le jeton en bas 
+                if(CellulesJeu[i][j].jetonCourant == null){// la place libre dans la case la plus basse 
+                    CellulesJeu[i][j].affecterJeton(Jetonj); // le jeton est placé 
+                    return true; // le jeton a été placé 
+            } 
+         
+                else if (CellulesJeu[i][j].presenceTrouNoir()==true){ // verifie si la cellule choisi est un trou noir 
+                    CellulesJeu[i][j].activerTrouNoir(); //si c'est le cas on active le trou noir 
+                    System.out.println("Trou Noir! Ton jeton a été aspirer"); 
+                    return true; 
+                } else if(CellulesJeu[i][j].presenceDesintegrateur()){
+                    CellulesJeu[i][j].recupererDesintegrateur();
+                    joueurCourant.nombreDesintegrateurs ++;
+                    
+                }
+                
+            }
+        }  
+        return true;
+        }     
+        
+        
     public boolean etreRemplie(){ 
         // on créer cette méthode pour voir si le tableau est rempli
         for (int i=0; i < CellulesJeu.length; i++ ){// on parcourt les lignes du tableau
