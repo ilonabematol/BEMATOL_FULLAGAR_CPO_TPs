@@ -72,9 +72,9 @@ public class Partie {
  for (int cpt=0; cpt<3; cpt++){
     int i = (int) (Math.random() * 5);// lignes  
     int j = (int)(Math.random() * 6);//colonnes
-    if(!grilleJeu.placerDesintegrateur(i, j)|| grilleJeu.CellulesJeu[i][j]!=null){
-        i--;
-    }
+    if (!grilleJeu.placerDesintegrateur(i, j) || grilleJeu.CellulesJeu[i][j].presenceTrouNoir()) {
+                i--;
+            }
     
 }   
     
@@ -99,18 +99,7 @@ public class Partie {
     
    
     
- //on place le désintégrateur
-int ct=0;
-
- while (ct<2){
-
-int i = (int) (Math.random() * 5);// lignes  
-int j = (int)(Math.random() * 6);//colonnes
-if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
-       grilleJeu.placerDesintegrateur(i,j);
-        ct+=1;
-    }
-}
+ 
 }
 
  public void debuterPartie(){
