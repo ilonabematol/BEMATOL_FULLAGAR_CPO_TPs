@@ -33,14 +33,39 @@ public class fenetreDejeu extends javax.swing.JFrame {
                             return;//arret de la méthode
                         }
                         if(c.jetonCourant.Couleur == null ? joueurCourant.couleur == null : c.jetonCourant.Couleur.equals(joueurCourant.couleur)){
+                         
                             textemessage.setText("le joueur " + joueurCourant.nom + " récupère un de ses jetons");
+                            Jeton j_recup = c.recupererJeton();
+                            joueurCourant.ajouterJeton(j_recup);
+                            JoueurSuivant();
+                            
                         }
                         else{
-                            textemessage.setText("le joueur " + joueurCourant.nom + " veut désintgégrer un jeton");
+                            if ( joueurCourant.nombreDesintegrateurs>0){
+                                textemessage.setText("le joueur " + joueurCourant.nom + " désintégre un jeton");
+                                c.supprimerJeton();
+                                joueurCourant.utiliserDesintegrateur();
+                                JoueurSuivant();
+                            }else return;
+                            
                         }
-                        textemessage.setText("un bouton a été cliqué");
-            
-                    }
+                        grilleJeu.tasserGrille();
+                        lbl_j1_desint.setText(ListeJoueurs[0].nombreDesintegrateurs+"");
+                        lbl_j2_desint.setText(ListeJoueurs[1].nombreDesintegrateurs+"");
+
+
+                        boolean vict_j1 = grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0]);
+                        boolean vict_j2 = grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1]);
+
+                        if(vict_j1 && !vict_j2) textemessage.setText("Victoire de " + ListeJoueurs[0].nom);
+                        if(vict_j2 && !vict_j1) textemessage.setText("Victoire de " + ListeJoueurs[1].nom);
+
+                        if(vict_j2 && vict_j1) {
+                            if(joueurCourant == ListeJoueurs[0])textemessage.setText("Victoire de " + ListeJoueurs[1].nom + " (faute de jeu de l'autre joueur)");
+                            else textemessage.setText("Victoire de " + ListeJoueurs[0].nom + " (faute de jeu de l'autre joueur)");
+
+                        }
+                                    }
             });
                 
                 panneau_grille.add(cellgraph);
