@@ -25,7 +25,24 @@ public class fenetreDejeu extends javax.swing.JFrame {
         
         for(int i=5;i>=0;i-- ){
             for (int j=0 ; j<7 ; j++){
-                CelluleGraphique cellgraph= new CelluleGraphique(grilleJeu.CellulesJeu[i][j]);
+                CelluleGraphique cellgraph= new CelluleGraphique(grilleJeu.CellulesJeu[i][j]);//définissent le bouton
+                 cellgraph.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        Cellule c = cellgraph.celluleAssociee;// c est la cellule associée au bouton sur lequel on est en train de cliquer 
+                        if(c.jetonCourant == null){
+                            return;//arret de la méthode
+                        }
+                        if(c.jetonCourant.Couleur == null ? joueurCourant.couleur == null : c.jetonCourant.Couleur.equals(joueurCourant.couleur)){
+                            textemessage.setText("le joueur " + joueurCourant.nom + " récupère un de ses jetons");
+                        }
+                        else{
+                            textemessage.setText("le joueur " + joueurCourant.nom + " veut désintgégrer un jeton");
+                        }
+                        textemessage.setText("un bouton a été cliqué");
+            
+                    }
+            });
+                
                 panneau_grille.add(cellgraph);
                 
                 
@@ -99,13 +116,13 @@ public class fenetreDejeu extends javax.swing.JFrame {
         lbl_j1_couleur = new javax.swing.JLabel();
         lbl_j1_desint = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
-        btn_col_7 = new javax.swing.JButton();
+        btn_col_6 = new javax.swing.JButton();
+        btn_col_0 = new javax.swing.JButton();
         btn_col_1 = new javax.swing.JButton();
         btn_col_2 = new javax.swing.JButton();
         btn_col_3 = new javax.swing.JButton();
         btn_col_4 = new javax.swing.JButton();
         btn_col_5 = new javax.swing.JButton();
-        btn_col_6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -292,61 +309,61 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
         getContentPane().add(panneau_infos_joueurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 190, 240, 180));
 
-        btn_col_7.setText("7");
-        btn_col_7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_col_7ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_col_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(626, 10, -1, -1));
-
-        btn_col_1.setText("1");
-        btn_col_1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_col_1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_col_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
-
-        btn_col_2.setText("2");
-        btn_col_2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_col_2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_col_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 10, -1, -1));
-
-        btn_col_3.setText("3");
-        btn_col_3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_col_3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_col_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 10, -1, -1));
-
-        btn_col_4.setText("4");
-        btn_col_4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_col_4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_col_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(338, 10, -1, -1));
-
-        btn_col_5.setText("5");
-        btn_col_5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_col_5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_col_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 10, -1, -1));
-
-        btn_col_6.setText("6");
+        btn_col_6.setText("7");
         btn_col_6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_col_6ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_col_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, -1, -1));
+        getContentPane().add(btn_col_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(626, 10, -1, -1));
+
+        btn_col_0.setText("1");
+        btn_col_0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_col_0ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_col_0, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
+
+        btn_col_1.setText("2");
+        btn_col_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_col_1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_col_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 10, -1, -1));
+
+        btn_col_2.setText("3");
+        btn_col_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_col_2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_col_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 10, -1, -1));
+
+        btn_col_3.setText("4");
+        btn_col_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_col_3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_col_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(338, 10, -1, -1));
+
+        btn_col_4.setText("5");
+        btn_col_4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_col_4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_col_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 10, -1, -1));
+
+        btn_col_5.setText("6");
+        btn_col_5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_col_5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_col_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, -1, -1));
 
         setBounds(0, 0, 1039, 692);
     }// </editor-fold>//GEN-END:initComponents
@@ -367,10 +384,20 @@ public class fenetreDejeu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_startActionPerformed
 
-    private void btn_col_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_1ActionPerformed
+    private void btn_col_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_0ActionPerformed
         // TODO add your handling code here:
         jouerDansColonne(1);
         if(grilleJeu.colonneRemplie(1) == true){
+            btn_col_0.setEnabled(false);
+            
+        }
+        JoueurSuivant();
+    }//GEN-LAST:event_btn_col_0ActionPerformed
+
+    private void btn_col_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_1ActionPerformed
+        // TODO add your handling code here:
+        jouerDansColonne(2);
+        if(grilleJeu.colonneRemplie(2) == true){
             btn_col_1.setEnabled(false);
             
         }
@@ -379,8 +406,8 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
     private void btn_col_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_2ActionPerformed
         // TODO add your handling code here:
-        jouerDansColonne(2);
-        if(grilleJeu.colonneRemplie(2) == true){
+        jouerDansColonne(3);
+        if(grilleJeu.colonneRemplie(3) == true){
             btn_col_2.setEnabled(false);
             
         }
@@ -389,8 +416,8 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
     private void btn_col_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_3ActionPerformed
         // TODO add your handling code here:
-        jouerDansColonne(3);
-        if(grilleJeu.colonneRemplie(3) == true){
+        jouerDansColonne(4);
+        if(grilleJeu.colonneRemplie(4) == true){
             btn_col_3.setEnabled(false);
             
         }
@@ -399,8 +426,8 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
     private void btn_col_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_4ActionPerformed
         // TODO add your handling code here:
-        jouerDansColonne(4);
-        if(grilleJeu.colonneRemplie(4) == true){
+        jouerDansColonne(5);
+        if(grilleJeu.colonneRemplie(5) == true){
             btn_col_4.setEnabled(false);
             
         }
@@ -409,8 +436,8 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
     private void btn_col_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_5ActionPerformed
         // TODO add your handling code here:
-        jouerDansColonne(5);
-        if(grilleJeu.colonneRemplie(5) == true){
+        jouerDansColonne(6);
+        if(grilleJeu.colonneRemplie(6) == true){
             btn_col_5.setEnabled(false);
             
         }
@@ -419,23 +446,13 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
     private void btn_col_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_6ActionPerformed
         // TODO add your handling code here:
-        jouerDansColonne(6);
-        if(grilleJeu.colonneRemplie(6) == true){
+        jouerDansColonne(7);
+        if(grilleJeu.colonneRemplie(7) == true){
             btn_col_6.setEnabled(false);
             
         }
         JoueurSuivant();
     }//GEN-LAST:event_btn_col_6ActionPerformed
-
-    private void btn_col_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_7ActionPerformed
-        // TODO add your handling code here:
-        jouerDansColonne(7);
-        if(grilleJeu.colonneRemplie(7) == true){
-            btn_col_7.setEnabled(false);
-            
-        }
-        JoueurSuivant();
-    }//GEN-LAST:event_btn_col_7ActionPerformed
     public void JoueurSuivant(){
         if(joueurCourant == ListeJoueurs [0]){
             joueurCourant= ListeJoueurs [1];
@@ -609,13 +626,13 @@ public class fenetreDejeu extends javax.swing.JFrame {
  }  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_col_0;
     private javax.swing.JButton btn_col_1;
     private javax.swing.JButton btn_col_2;
     private javax.swing.JButton btn_col_3;
     private javax.swing.JButton btn_col_4;
     private javax.swing.JButton btn_col_5;
     private javax.swing.JButton btn_col_6;
-    private javax.swing.JButton btn_col_7;
     private javax.swing.JButton btn_start;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
