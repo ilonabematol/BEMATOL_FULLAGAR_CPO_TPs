@@ -72,11 +72,11 @@ public class Partie {
     // on place 3 désintégrateurs aléatoirement
     // on génère aléatoirement des coordonnées pour placer les désintégrateurs
  for (int cpt=0; cpt<3; cpt++){
-    int i = (int) (Math.random() * 5);// lignes  
-    int j = (int)(Math.random() * 6);//colonnes
-    if(!grilleJeu.placerDesintegrateur(i, j)|| grilleJeu.CellulesJeu[i][j]!=null && grilleJeu.CellulesJeu[i][j].presenceTrouNoir()==false ){
-        i--;
-    }
+    int i = (int) (Math.random() * 6);// lignes  
+    int j = (int)(Math.random() * 7);//colonnes
+    if (!grilleJeu.placerDesintegrateur(i, j) || grilleJeu.CellulesJeu[i][j].presenceTrouNoir()) {
+                i--;
+            }
     
 }   
     
@@ -84,9 +84,9 @@ public class Partie {
     //Génération des 5 trous noirs et de 2 désintégrateurs sur les trous noirs
     Random position = new Random();
         int compteur = 0;
-        for (int i = 0; i < 5; i++) {
-            int lig = position.nextInt(5);
-            int col = position.nextInt(6);
+        for (int i = 1; i <7 ; i++) {
+            int lig = position.nextInt(6);
+            int col = position.nextInt(7);
             if (compteur < 2) {
                 if (!grilleJeu.placerDesintegrateur(lig, col)) {
                     compteur--;
@@ -136,7 +136,7 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
                 case 1: //poser un jeton
 
         System.out.println("Choisir colonne de 0 a 6");
-        int ChoixC = sc.nextInt(); //bien repérer sur tableau de 0 à 6 avec 7 cases
+        int ChoixC = sc.nextInt()-1; //bien repérer sur tableau de 0 à 6 avec 7 cases
 
         while (ChoixC <0 || ChoixC >6){ // verifie si sort de la grille
             System.out.println("Colonne invalide. Réessayer.");
@@ -145,7 +145,7 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
 
         if (grilleJeu.colonneRemplie(ChoixC) == true){ //verifie si tout les espace de jeton sont deja pris
             System.out.println("Colonne remplie. Réessayer.");
-            ChoixC = sc.nextInt();
+            ChoixC = sc.nextInt()-1;
             
     }
       
@@ -183,13 +183,13 @@ if( grilleJeu.CellulesJeu[i][j].trouNoir==true){
             
             System.out.println("Veuillez saisir les coordonnées du jeton a désintégrer :");
             System.out.println("saisir la ligne du jeton a desintegrer");
-            int ligne = sc.nextInt(); 
+            int ligne = sc.nextInt()-1; 
             while (ligne > 5 || ligne < 0) {
     System.out.println("Erreur: veuillez saisir une ligne valide:");
     
            }
             System.out.println("saisir la colonne du jeton a desintegrer");
-            int colonne = sc.nextInt(); 
+            int colonne = sc.nextInt()-1; 
             while (colonne > 5 || colonne < 0) {
     System.out.println("Erreur: veuillez saisir une ligne valide:");
     
@@ -212,10 +212,10 @@ if (grilleJeu.CellulesJeu[ligne][colonne].jetonCourant != null && !grilleJeu.Cel
         
           
             System.out.println("saisir la ligne du jeton a récuperer");
-            int line = sc.nextInt();
+            int line = sc.nextInt()-1;
              while (line > 5 || line < 0) {
             System.out.println("Erreur : veuillez saisir une ligne valide :");
-            line = sc.nextInt();
+            line = sc.nextInt()-1;
              }
              
              
@@ -223,7 +223,7 @@ if (grilleJeu.CellulesJeu[ligne][colonne].jetonCourant != null && !grilleJeu.Cel
             int colon = sc.nextInt();
             while (colon > 6 || colon < 0) {
             System.out.println("Erreur : veuillez saisir une colonne valide :");
-            colon = sc.nextInt() ;
+            colon = sc.nextInt()-1 ;
         }
             
             

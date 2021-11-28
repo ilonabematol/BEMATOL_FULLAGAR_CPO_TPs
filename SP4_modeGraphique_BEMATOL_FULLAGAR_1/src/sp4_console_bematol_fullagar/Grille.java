@@ -38,7 +38,7 @@ public class Grille {
          
     }*/
     
-        public boolean ajouterJetonDansColonne(Joueur joueurCourant , int j){//j correspond au numéro de la colonne 
+        /*public boolean ajouterJetonDansColonne(Joueur joueurCourant , int j){//j correspond au numéro de la colonne 
         // le jeton est placé dans la case la plus basse 
         
         Jeton Jetonj = joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1];
@@ -69,7 +69,33 @@ public class Grille {
             }
         }  
         return true;
-        }     
+        } */
+boolean ajouterJetonDansColonne(Joueur joueurCourant, int ind_colonne) {
+        // si la colonne est remplie, on s'arrete et on retourne false
+        if (colonneRemplie(ind_colonne)) return false;
+        
+        // on recherche l'indice de la ligne où ajouter le jeton
+        // forcement cet inddice existe 
+        int i = 0;
+        while (CellulesJeu[i][ind_colonne].jetonCourant != null) {
+            i++;
+        }
+
+        // on récupére un jeton dans la liste des jetons du joueur 
+        Jeton un_jeton = joueurCourant.retirerJeton();
+        // on ajoute le jeton dans la case en question
+        CellulesJeu[i][ind_colonne].jetonCourant = un_jeton;
+        // on récupère un potentiel désintegrateur
+        if (CellulesJeu[i][ind_colonne].presenceDesintegrateur()) {
+            CellulesJeu[i][ind_colonne].recupererDesintegrateur();
+            joueurCourant.nombreDesintegrateurs++;
+        }
+        // on active le potentiel trou noir
+        if (CellulesJeu[i][ind_colonne].presenceTrouNoir()) {
+           CellulesJeu[i][ind_colonne].activerTrouNoir();
+        }
+        return true;
+    }    
         
         
     public boolean etreRemplie(){ 

@@ -53,10 +53,10 @@ public Joueur(String nomJoueur) {
         return true; //confirme l'utilisation
 
     }
-    /*Jeton retirerJeton(){
+    Jeton retirerJeton(){
         nombreJetonsRestants = nombreJetonsRestants-1;
         return ListeJetons[nombreJetonsRestants];
-    }*/
+    }
 
 }
 

@@ -22,6 +22,8 @@ public class CelluleGraphique extends JButton {
     
     public CelluleGraphique(Cellule uneCellule){
         celluleAssociee=uneCellule;
+        //CelluleGraphique celluleAssociee = new CelluleGraphique();
+        
         
     }
     
@@ -41,7 +43,7 @@ public class CelluleGraphique extends JButton {
               case "Cellule vide":
                   setIcon(img_vide);// on attribue l'image cellule vide 
                   break;
-              case " Rouge":
+              case "Rouge":
                   setIcon(img_jetonRouge);
                   break;
               case "Jaune":
