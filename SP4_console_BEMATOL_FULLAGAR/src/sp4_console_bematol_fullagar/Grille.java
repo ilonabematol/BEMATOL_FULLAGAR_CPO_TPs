@@ -288,10 +288,10 @@ void tasserGrille() {
 
 public boolean colonneRemplie( int j ){// correspond à la colonne 
     // renvoie true si la colonne est remplie = on ne peut pas jouer de jeton
-    if (CellulesJeu[5][j].jetonCourant== null ){
-       return false; // la colonne est pas remplie 
+    if (CellulesJeu[5][j].recupererJeton() != null ){
+       return true; // la colonne est  remplie 
     }
-    return true; // la colonne est remplie 
+    return false; // la colonne est pas remplie 
 }
 
 public boolean placerTrouNoir( int i , int j ){// i = nb de lignes j= nb colonnes 
