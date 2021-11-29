@@ -69,16 +69,7 @@ public class Partie {
    
     
 
-    // on place 3 désintégrateurs aléatoirement
-    // on génère aléatoirement des coordonnées pour placer les désintégrateurs
- for (int cpt=0; cpt<3; cpt++){
-    int i = (int) (Math.random() * 6);// lignes  
-    int j = (int)(Math.random() * 7);//colonnes
-    if (!grilleJeu.placerDesintegrateur(i, j) || grilleJeu.CellulesJeu[i][j].presenceTrouNoir()) {
-                i--;
-            }
     
-}   
     
     
     //Génération des 5 trous noirs et de 2 désintégrateurs sur les trous noirs
@@ -99,7 +90,16 @@ public class Partie {
         }
         grilleJeu.afficherGrilleSurConsole();
     
-   
+   // on place 3 désintégrateurs aléatoirement
+    // on génère aléatoirement des coordonnées pour placer les désintégrateurs
+ for (int cpt=0; cpt<3; cpt++){
+    int i = (int) (Math.random() * 6);// lignes  
+    int j = (int)(Math.random() * 7);//colonnes
+    if (!grilleJeu.placerDesintegrateur(i, j) || grilleJeu.CellulesJeu[i][j].presenceTrouNoir()) {
+                i--;
+            }
+    
+}   
     
  //on place le désintégrateur
 /*nt ct=0;
@@ -220,7 +220,7 @@ if (grilleJeu.CellulesJeu[ligne][colonne].jetonCourant != null && !grilleJeu.Cel
              
              
             System.out.println("saisir la colonne du jeton a récuperer");
-            int colon = sc.nextInt();
+            int colon = sc.nextInt()-1;
             while (colon > 6 || colon < 0) {
             System.out.println("Erreur : veuillez saisir une colonne valide :");
             colon = sc.nextInt()-1 ;
