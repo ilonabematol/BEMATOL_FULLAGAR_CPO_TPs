@@ -411,8 +411,8 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
     private void btn_col_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_0ActionPerformed
         // TODO add your handling code here:
-        jouerDansColonne(1);
-        if(grilleJeu.colonneRemplie(1) == true){
+        jouerDansColonne(0);
+        if(grilleJeu.colonneRemplie(0) == true){
             btn_col_0.setEnabled(false);
             
         }
@@ -421,8 +421,8 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
     private void btn_col_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_1ActionPerformed
         // TODO add your handling code here:
-        jouerDansColonne(2);
-        if(grilleJeu.colonneRemplie(2) == true){
+        jouerDansColonne(1);
+        if(grilleJeu.colonneRemplie(1) == true){
             btn_col_1.setEnabled(false);
             
         }
@@ -431,8 +431,8 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
     private void btn_col_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_2ActionPerformed
         // TODO add your handling code here:
-        jouerDansColonne(3);
-        if(grilleJeu.colonneRemplie(3) == true){
+        jouerDansColonne(2);
+        if(grilleJeu.colonneRemplie(2) == true){
             btn_col_2.setEnabled(false);
             
         }
@@ -441,8 +441,8 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
     private void btn_col_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_3ActionPerformed
         // TODO add your handling code here:
-        jouerDansColonne(4);
-        if(grilleJeu.colonneRemplie(4) == true){
+        jouerDansColonne(3);
+        if(grilleJeu.colonneRemplie(3) == true){
             btn_col_3.setEnabled(false);
             
         }
@@ -451,8 +451,8 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
     private void btn_col_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_4ActionPerformed
         // TODO add your handling code here:
-        jouerDansColonne(5);
-        if(grilleJeu.colonneRemplie(5) == true){
+        jouerDansColonne(4);
+        if(grilleJeu.colonneRemplie(4) == true){
             btn_col_4.setEnabled(false);
             
         }
@@ -461,8 +461,8 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
     private void btn_col_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_5ActionPerformed
         // TODO add your handling code here:
-        jouerDansColonne(6);
-        if(grilleJeu.colonneRemplie(6) == true){
+        jouerDansColonne(5);
+        if(grilleJeu.colonneRemplie(5) == true){
             btn_col_5.setEnabled(false);
             
         }
@@ -471,8 +471,8 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
     private void btn_col_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_6ActionPerformed
         // TODO add your handling code here:
-        jouerDansColonne(7);
-        if(grilleJeu.colonneRemplie(7) == true){
+        jouerDansColonne(6);
+        if(grilleJeu.colonneRemplie(6) == true){
             btn_col_6.setEnabled(false);
             
         }
@@ -600,21 +600,8 @@ public class fenetreDejeu extends javax.swing.JFrame {
     }
     
    lbl_jcourant.setText(joueurCourant.nom);
-
-    
-    
-    // on place 3 désintégrateurs aléatoirement
-    // on génère aléatoirement des coordonnées pour placer les désintégrateurs
- for (int cpt=0; cpt<3; cpt++){
-    int i = (int) (Math.random() * 6);// lignes  
-    int j = (int)(Math.random() * 7);//colonnes
-    if (!grilleJeu.placerDesintegrateur(i, j) || grilleJeu.CellulesJeu[i][j].presenceTrouNoir()) {
-                i--;
-            }
-    
-}   
-    
- //Génération des 5 trous noirs et de 2 désintégrateurs sur les trous noirs
+   
+   //Génération des 5 trous noirs et de 2 désintégrateurs sur les trous noirs
  Random position = new Random();
         int compteur = 0;
         for (int i = 0; i < 5; i++) {
@@ -631,8 +618,19 @@ public class fenetreDejeu extends javax.swing.JFrame {
             }
         }
         
+// on place 3 désintégrateurs aléatoirement
+    // on génère aléatoirement des coordonnées pour placer les désintégrateurs
+ for (int cpt=0; cpt<3; cpt++){
+    int i = (int) (Math.random() * 6);// lignes  
+    int j = (int)(Math.random() * 7);//colonnes
+    if (!grilleJeu.placerDesintegrateur(i, j) || grilleJeu.CellulesJeu[i][j].presenceTrouNoir()) {
+                i--;
+            }
+    
+} 
 
-}
+    }  
+
     
     public void attribuerCouleursAuxJoueurs(){
     Random alea = new Random(); // attribution des joueurs au hasard

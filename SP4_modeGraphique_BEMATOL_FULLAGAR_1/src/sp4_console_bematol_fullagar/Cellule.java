@@ -23,7 +23,8 @@ public class Cellule {
     public boolean affecterJeton(Jeton unJeton){
          // renvoie true si le jeton a bien été affecte au joueur, false sinon
          if (jetonCourant == null){ // vérifie que case soit vide
-            jetonCourant = unJeton; // pour affecter un jeton
+            jetonCourant = unJeton; 
+            activerTrouNoir();
             System.out.println("Jeton affecté");
             return true;
         }
@@ -97,7 +98,7 @@ public class Cellule {
     
     public boolean activerTrouNoir(){
         // si il y a un trou noir alors vide la cellule et fait disparaitre le trou noir, sinon ne fait rien
-       if(trouNoir == true){ // présence d'un trou noir 
+       if(presenceTrouNoir() == true){ // présence d'un trou noir 
         jetonCourant=null; // on enlève le jeton
         trouNoir = false; // disparition du Trou Noir
         return true;  
