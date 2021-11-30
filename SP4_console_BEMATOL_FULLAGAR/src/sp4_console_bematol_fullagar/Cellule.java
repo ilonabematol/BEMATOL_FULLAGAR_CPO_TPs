@@ -28,11 +28,17 @@ public class Cellule {
             
             return true;
         }
+         if(presenceDesintegrateur()== true){
+             recupererDesintegrateur();
+             
+         }
         else {
           System.out.println("Un jeton est déjà présent"); 
           return false;
         }
+        return false;
     }
+    
     public Jeton recupererJeton(){
         Jeton jetonRetour = jetonCourant; // on détermine quel jeton on veut récupérer
         jetonCourant = null; // on réintialise la vide, maintenant vide puisque jeton récupéré
@@ -90,6 +96,7 @@ public class Cellule {
         // si il y a un desintegrateur, le supprime et renvoie true, sinon renvoie false et ne fait rien
         if(desintegrateur =! false){// il y a un désintégrateur
         desintegrateur = false;//on enlève le désintégrateur
+        System.out.println("desintegrateur recupere");
         return true;  //le désintégrateur a été enelevé
     }else{
          return false;// il n'y avait pas de désintégrateur 
